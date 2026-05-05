@@ -3,212 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AutoZunis | Tire Sales & Installation</title>
-  <meta name="description" content="AutoZunis offers premium tires, fast shipping, and professional installation." />
+  <title>AutoZunis | Local Tire Shop in Montreal</title>
+  <meta name="description" content="AutoZunis is a local tire shop in Montreal for in-store tire sales and service. No shipping or delivery." />
   <style>
     :root{
-      --bg:#0b1220;
-      --bg-soft:#101a2f;
-      --card:#121c33;
-      --text:#e6edf7;
-      --muted:#97a7c3;
-      --primary:#3b82f6;
-      --accent:#22c55e;
-      --border:#223250;
-      --danger:#ef4444;
-      --radius:14px;
-      --shadow:0 12px 30px rgba(0,0,0,.28);
-      --max:1200px;
+      --bg:#0b1220; --bg2:#101a31; --card:#121c33; --text:#e6edf7; --muted:#9db0cf;
+      --primary:#3b82f6; --accent:#22c55e; --border:#243857; --radius:14px; --max:1150px;
+      --shadow:0 10px 24px rgba(0,0,0,.28);
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
-      background:linear-gradient(180deg,#08101d,#0d1527 30%,#0b1220);
-      line-height:1.55;
+      background:linear-gradient(180deg,#08101d 0%, #0d1527 35%, #0b1220 100%);
+      line-height:1.6;
     }
     a{text-decoration:none;color:inherit}
     .container{width:min(92%,var(--max));margin-inline:auto}
     .btn{
-      border:1px solid transparent;border-radius:10px;padding:.68rem 1rem;
-      cursor:pointer;font-weight:600;transition:.2s ease;
+      display:inline-block;padding:.72rem 1rem;border-radius:10px;font-weight:700;
+      border:1px solid transparent;cursor:pointer;transition:.2s ease
     }
     .btn-primary{background:var(--primary);color:#fff}
-    .btn-primary:hover{filter:brightness(1.07)}
-    .btn-ghost{background:transparent;border-color:var(--border);color:var(--text)}
+    .btn-primary:hover{filter:brightness(1.08)}
+    .btn-ghost{border-color:var(--border);background:transparent;color:var(--text)}
     .btn-ghost:hover{background:#162440}
-    .btn-danger{background:var(--danger);color:white}
-    .btn-sm{padding:.45rem .7rem;font-size:.9rem}
-    .badge{
-      display:inline-block;padding:.2rem .55rem;border-radius:999px;font-size:.75rem;
-      background:rgba(59,130,246,.18);border:1px solid #2a4f87;color:#b8d5ff;
-    }
 
     header{
-      position:sticky;top:0;z-index:80;
+      position:sticky;top:0;z-index:50;
       background:rgba(8,13,25,.88);backdrop-filter:blur(8px);
       border-bottom:1px solid var(--border);
     }
-    .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px;gap:1rem}
-    .logo{display:flex;align-items:center;gap:.65rem;font-weight:800;font-size:1.12rem}
+    .nav{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem
+    }
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.1rem}
     .logo-wheel{
       width:34px;height:34px;border-radius:50%;
-      border:3px solid #d3dae9;background:radial-gradient(circle,#2d3b56 10%,#0c1528 62%);
-      position:relative;
+      border:3px solid #d5ddef;
+      background:radial-gradient(circle,#324462 8%, #101a31 60%);
     }
-    .logo-wheel:before{
-      content:"";position:absolute;inset:7px;border-radius:50%;border:2px dashed rgba(255,255,255,.28);
-    }
-    nav ul{display:flex;list-style:none;gap:1rem;align-items:center}
-    nav a{color:var(--muted);font-weight:550}
+    nav ul{display:flex;list-style:none;align-items:center;gap:1rem;flex-wrap:wrap}
+    nav a{color:var(--muted);font-weight:600}
     nav a:hover{color:var(--text)}
+    .lang-toggle{display:flex;gap:.35rem}
+    .lang-btn{
+      padding:.38rem .6rem;border-radius:8px;border:1px solid var(--border);
+      background:#0d172b;color:var(--text);font-weight:800;cursor:pointer
+    }
+    .lang-btn.active{background:var(--primary);border-color:transparent}
 
-    .hero{padding:4.8rem 0 3.5rem}
+    .hero{padding:4.4rem 0 3rem}
     .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:1.5rem;align-items:center}
     .kicker{
-      color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;font-weight:800;margin-bottom:.65rem
+      color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;
+      font-weight:800;margin-bottom:.7rem
     }
-    h1{font-size:clamp(2rem,4.8vw,3.6rem);line-height:1.1;margin-bottom:1rem}
-    .hero p{color:var(--muted);max-width:62ch;margin-bottom:1.25rem}
-    .hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:1rem}
-    .hero-trust{display:flex;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
+    h1{font-size:clamp(2rem,4.8vw,3.4rem);line-height:1.12;margin-bottom:1rem}
+    .hero p{color:var(--muted);max-width:62ch;margin-bottom:1.2rem}
+    .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap}
     .hero-card{
-      border:1px solid var(--border);border-radius:var(--radius);padding:1rem;
-      background:linear-gradient(170deg,#101a31,#0b1220);box-shadow:var(--shadow)
+      border:1px solid var(--border);border-radius:var(--radius);
+      background:linear-gradient(160deg,#101a31,#0b1220);padding:1rem;box-shadow:var(--shadow)
     }
     .wheel{
-      width:min(330px,86%);aspect-ratio:1/1;margin:.2rem auto 1rem;border-radius:50%;
+      width:min(320px,86%);aspect-ratio:1/1;margin:.2rem auto 1rem;border-radius:50%;
       border:12px solid #d2d9e7;
       background:radial-gradient(circle,#111b30 0 19%,#3a4a67 19% 31%,#101a2f 31% 47%,#617089 47% 53%,#101a2f 53%);
       animation:spin 12s linear infinite;
     }
     @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem}
-    .stat{background:#0d172b;border:1px solid var(--border);border-radius:10px;padding:.7rem;text-align:center}
-    .stat strong{display:block;font-size:1.12rem}
-    .stat span{color:var(--muted);font-size:.82rem}
+    .stat{
+      background:#0d172b;border:1px solid var(--border);border-radius:10px;padding:.7rem;text-align:center
+    }
+    .stat strong{display:block;font-size:1.05rem}
+    .stat span{color:var(--muted);font-size:.85rem}
 
-    section{padding:3.2rem 0}
-    .section-title{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:.45rem}
-    .section-sub{color:var(--muted);margin-bottom:1.35rem}
+    section{padding:2.8rem 0}
+    .section-title{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:.45rem}
+    .section-sub{color:var(--muted);margin-bottom:1rem}
 
     .filters{
-      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-bottom:1.1rem
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-bottom:1rem
     }
     .filters select,.filters input{
       background:#0d172b;color:var(--text);border:1px solid var(--border);
-      border-radius:10px;padding:.68rem .75rem;outline:none;
+      border-radius:10px;padding:.68rem .75rem;outline:none
     }
-
     .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
     .card{
       background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-      overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)
+      overflow:hidden;box-shadow:var(--shadow)
     }
-    .card-top{
-      min-height:165px;display:grid;place-items:center;
-      background:linear-gradient(180deg,#16223d,#121c33)
-    }
+    .card-top{min-height:145px;display:grid;place-items:center;background:linear-gradient(180deg,#172847,#121c33)}
     .tire{
-      width:116px;height:116px;border-radius:50%;border:8px solid #d4dbe8;
-      background:radial-gradient(circle,#111b30 0 20%,#33435f 20% 33%,#111b30 33% 47%,#5f6f86 47% 54%,#111b30 54%);
+      width:106px;height:106px;border-radius:50%;border:8px solid #d4dbe8;
+      background:radial-gradient(circle,#111b30 0 20%,#33435f 20% 33%,#111b30 33% 47%,#5f6f86 47% 54%,#111b30 54%)
     }
-    .card-body{padding:1rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
-    .price{font-size:1.15rem;font-weight:800}
-    .old{color:var(--muted);text-decoration:line-through;font-weight:500;font-size:.92rem;margin-left:.3rem}
+    .card-body{padding:1rem}
+    .badge{
+      display:inline-block;padding:.2rem .55rem;border-radius:999px;font-size:.75rem;
+      background:rgba(59,130,246,.18);border:1px solid #2a4f87;color:#b8d5ff;margin-bottom:.4rem
+    }
+    .card h3{margin-bottom:.35rem}
     .meta{color:var(--muted);font-size:.92rem}
-    .actions{margin-top:auto;display:grid;grid-template-columns:1fr 64px;gap:.55rem}
-    .qty{
-      text-align:center;background:#0d172b;color:var(--text);border:1px solid var(--border);border-radius:9px
-    }
+    .price{margin-top:.45rem;font-size:1.1rem;font-weight:800}
+    .old{color:var(--muted);text-decoration:line-through;font-size:.9rem;margin-left:.35rem}
 
-    .service-grid,.testimonials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-    .service,blockquote{
+    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .service{
       background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem
     }
-    .service p,blockquote p{color:var(--muted)}
-    blockquote footer{margin-top:.65rem;color:#c4d1e7;font-size:.9rem}
+    .service p{color:var(--muted)}
 
-    .cta{
-      border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;
-      background:linear-gradient(140deg,#0f1a33,#15254a);display:grid;grid-template-columns:1.15fr .85fr;gap:1rem;align-items:center;
+    .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .panel{
+      background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem
     }
-    .newsletter{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
-    .newsletter input{
-      background:#0d172b;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:.68rem .75rem;min-width:210px
+    .panel p{color:var(--muted)}
+    .map-wrap{
+      border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)
     }
+    .map-wrap iframe{width:100%;height:100%;min-height:320px;border:0}
 
-    footer{padding:2rem 0;border-top:1px solid var(--border);color:var(--muted);margin-top:2rem}
+    footer{
+      margin-top:2rem;padding:2rem 0;border-top:1px solid var(--border);color:var(--muted)
+    }
     .foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-
-    /* Cart Drawer */
-    .cart-toggle{
-      position:fixed;right:20px;bottom:20px;z-index:90;
-      border:none;border-radius:999px;padding:.82rem 1.05rem;
-      background:var(--primary);color:white;font-weight:800;box-shadow:var(--shadow);cursor:pointer;
-      display:flex;align-items:center;gap:.5rem
-    }
-    .cart-count{
-      background:white;color:#0f1c35;border-radius:999px;padding:.08rem .45rem;font-size:.85rem;font-weight:800
-    }
-    .overlay{
-      position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.2s;z-index:95;
-    }
-    .overlay.show{opacity:1;pointer-events:auto}
-    .cart-drawer{
-      position:fixed;top:0;right:0;height:100%;width:min(430px,92%);
-      background:#0c162b;border-left:1px solid var(--border);
-      transform:translateX(100%);transition:.25s ease;z-index:100;display:flex;flex-direction:column;
-    }
-    .cart-drawer.open{transform:translateX(0)}
-    .cart-head,.cart-foot{padding:1rem;border-bottom:1px solid var(--border)}
-    .cart-foot{border-bottom:none;border-top:1px solid var(--border);margin-top:auto}
-    .cart-list{padding:1rem;display:flex;flex-direction:column;gap:.8rem;overflow:auto}
-    .cart-item{
-      border:1px solid var(--border);border-radius:10px;padding:.75rem;background:#101d37;
-      display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;
-    }
-    .cart-item small{color:var(--muted)}
-    .cart-controls{display:flex;align-items:center;gap:.4rem}
-    .cart-controls input{
-      width:56px;text-align:center;background:#0d172b;color:var(--text);border:1px solid var(--border);border-radius:8px
-    }
-    .row{display:flex;justify-content:space-between;gap:.7rem}
-    .empty{color:var(--muted);text-align:center;padding:1.4rem 0}
-
-    /* Checkout modal */
-    .modal{
-      position:fixed;inset:0;display:grid;place-items:center;
-      background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.2s;z-index:110;
-    }
-    .modal.show{opacity:1;pointer-events:auto}
-    .modal-card{
-      width:min(620px,92%);background:#0d172b;border:1px solid var(--border);
-      border-radius:16px;box-shadow:var(--shadow);padding:1rem;
-    }
-    .checkout-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .checkout-grid .full{grid-column:1 / -1}
-    .checkout-grid input,.checkout-grid textarea{
-      width:100%;padding:.66rem .72rem;border-radius:9px;border:1px solid var(--border);
-      background:#0a1325;color:var(--text)
-    }
-    .checkout-grid textarea{min-height:90px;resize:vertical}
-    .modal-actions{display:flex;justify-content:flex-end;gap:.55rem;margin-top:.8rem}
 
     @media (max-width:1024px){
       .hero-wrap{grid-template-columns:1fr}
-      .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .service-grid,.testimonials{grid-template-columns:1fr}
-      .cta{grid-template-columns:1fr}
-      .newsletter{justify-content:flex-start}
+      .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .service-grid{grid-template-columns:1fr}
+      .location-grid{grid-template-columns:1fr}
     }
-    @media (max-width:650px){
-      nav ul{display:none}
-      .product-grid{grid-template-columns:1fr}
-      .filters{grid-template-columns:1fr}
-      .stats{grid-template-columns:1fr}
-      .checkout-grid{grid-template-columns:1fr}
+    @media (max-width:640px){
+      nav ul{gap:.6rem}
+      .filters,.product-grid,.stats{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -219,13 +152,17 @@
         <span class="logo-wheel"></span>
         <span>AutoZunis</span>
       </a>
+
       <nav>
         <ul>
-          <li><a href="#catalog">Shop</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="tel:5145080508">Call 514-508-0508</a></li>
-          <li><button id="openCartTop" class="btn btn-primary btn-sm">Cart</button></li>
+          <li><a href="#catalog" data-i18n="nav_shop">Shop</a></li>
+          <li><a href="#services" data-i18n="nav_services">Services</a></li>
+          <li><a href="#location" data-i18n="nav_location">Location</a></li>
+          <li><a href="tel:5145080508" data-i18n="nav_call">Call 514-508-0508</a></li>
+          <li class="lang-toggle">
+            <button class="lang-btn active" id="langEN" type="button">EN</button>
+            <button class="lang-btn" id="langFR" type="button">FR</button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -235,28 +172,23 @@
     <section class="hero">
       <div class="container hero-wrap">
         <div>
-          <p class="kicker">Drive safe. Save more.</p>
-          <h1>Find Your Perfect Tires at <span style="color:var(--primary)">AutoZunis</span></h1>
-          <p>
-            Premium all-season, winter, performance, and off-road tires with fast shipping and installation options.
-            Need help now? <a href="tel:5145080508" style="color:#93c5fd;text-decoration:underline;">Call 514-508-0508</a>.
+          <p class="kicker" data-i18n="hero_kicker">Local tire experts in Montreal</p>
+          <h1 data-i18n="hero_title">In-Store Tire Sales at AutoZunis</h1>
+          <p data-i18n="hero_desc">
+            We are a local shop. No shipping or delivery. Visit us at 11840 Av. 54, Montreal, QC H1E 2J3.
           </p>
           <div class="hero-cta">
-            <a href="#catalog" class="btn btn-primary">Shop Tire Deals</a>
-            <a href="tel:5145080508" class="btn btn-ghost">Call AutoZunis</a>
-          </div>
-          <div class="hero-trust">
-            <span>✔ Fast shipping</span>
-            <span>✔ Professional installation partners</span>
-            <span>✔ 30-day satisfaction guarantee</span>
+            <a href="#catalog" class="btn btn-primary" data-i18n="hero_shop">Browse Tires</a>
+            <a href="tel:5145080508" class="btn btn-ghost" data-i18n="hero_call">Call AutoZunis</a>
           </div>
         </div>
+
         <aside class="hero-card">
           <div class="wheel" aria-hidden="true"></div>
           <div class="stats">
-            <div class="stat"><strong>2,500+</strong><span>Tire models</span></div>
-            <div class="stat"><strong>4.9/5</strong><span>Rated by drivers</span></div>
-            <div class="stat"><strong>48h</strong><span>Avg ship time</span></div>
+            <div class="stat"><strong>2,500+</strong><span data-i18n="stat_models">Tire models</span></div>
+            <div class="stat"><strong>Local</strong><span data-i18n="stat_local">Montreal shop</span></div>
+            <div class="stat"><strong>6 days</strong><span data-i18n="stat_week">Open weekly</span></div>
           </div>
         </aside>
       </div>
@@ -264,25 +196,27 @@
 
     <section id="catalog">
       <div class="container">
-        <h2 class="section-title">Top-Selling Tires</h2>
-        <p class="section-sub">Filter by vehicle type, season, or search by name.</p>
+        <h2 class="section-title" data-i18n="catalog_title">Top-Selling Tires</h2>
+        <p class="section-sub" data-i18n="catalog_sub">Filter by vehicle type, season, or name.</p>
 
         <div class="filters">
           <select id="filterVehicle">
-            <option value="all">All Vehicle Types</option>
-            <option value="car">Car</option>
-            <option value="suv">SUV</option>
-            <option value="truck">Truck</option>
+            <option value="all" data-i18n="filter_all_vehicle">All Vehicle Types</option>
+            <option value="car" data-i18n="filter_car">Car</option>
+            <option value="suv" data-i18n="filter_suv">SUV</option>
+            <option value="truck" data-i18n="filter_truck">Truck</option>
           </select>
+
           <select id="filterSeason">
-            <option value="all">All Seasons</option>
-            <option value="all-season">All-Season</option>
-            <option value="winter">Winter</option>
-            <option value="performance">Performance</option>
-            <option value="off-road">Off-Road</option>
+            <option value="all" data-i18n="filter_all_season">All Seasons</option>
+            <option value="all-season" data-i18n="filter_allseason">All-Season</option>
+            <option value="winter" data-i18n="filter_winter">Winter</option>
+            <option value="performance" data-i18n="filter_performance">Performance</option>
+            <option value="off-road" data-i18n="filter_offroad">Off-Road</option>
           </select>
+
           <input id="filterSearch" type="search" placeholder="Search tire name..." />
-          <button id="clearFilters" class="btn btn-ghost">Clear Filters</button>
+          <button id="clearFilters" class="btn btn-ghost" type="button" data-i18n="clear_filters">Clear Filters</button>
         </div>
 
         <div id="productGrid" class="product-grid"></div>
@@ -291,159 +225,215 @@
 
     <section id="services">
       <div class="container">
-        <h2 class="section-title">Tire Services</h2>
-        <p class="section-sub">From purchase to installation, AutoZunis has you covered.</p>
+        <h2 class="section-title" data-i18n="services_title">In-Shop Services</h2>
         <div class="service-grid">
           <article class="service">
-            <h3>Installation & Balancing</h3>
-            <p>Book trusted nearby installers and get your tires mounted and balanced professionally.</p>
+            <h3 data-i18n="service_1_title">Installation & Balancing</h3>
+            <p data-i18n="service_1_desc">Professional tire mounting and balancing done on-site.</p>
           </article>
           <article class="service">
-            <h3>Alignment & Rotation</h3>
-            <p>Keep your tread healthy and extend tire life with maintenance services.</p>
+            <h3 data-i18n="service_2_title">Alignment & Rotation</h3>
+            <p data-i18n="service_2_desc">Keep your tires performing longer with maintenance services.</p>
           </article>
           <article class="service">
-            <h3>Road Hazard Coverage</h3>
-            <p>Optional protection plans for punctures and impact damage.</p>
+            <h3 data-i18n="service_3_title">Local Pickup Appointments</h3>
+            <p data-i18n="service_3_desc">Book your visit and pick up in-store. No shipping or delivery available.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="reviews">
+    <section id="location">
       <div class="container">
-        <h2 class="section-title">What Customers Say</h2>
-        <p class="section-sub">Real feedback from AutoZunis customers.</p>
-        <div class="testimonials">
-          <blockquote>
-            <p>“Excellent price and quick delivery. New tires completely changed my drive quality.”</p>
-            <footer>— Sarah M.</footer>
-          </blockquote>
-          <blockquote>
-            <p>“The filter and checkout were super easy. Installed within 3 days.”</p>
-            <footer>— Alex G.</footer>
-          </blockquote>
-          <blockquote>
-            <p>“Great winter tire recommendation over the phone. Thanks AutoZunis!”</p>
-            <footer>— Daniel T.</footer>
-          </blockquote>
+        <h2 class="section-title" data-i18n="location_title">Visit Our Shop</h2>
+        <div class="location-grid">
+          <div class="panel">
+            <p><strong data-i18n="address_label">Address:</strong></p>
+            <p>11840 Av. 54, Montreal, QC H1E 2J3</p>
+            <br />
+            <p><strong data-i18n="phone_label">Phone:</strong> <a href="tel:5145080508">514-508-0508</a></p>
+            <p data-i18n="local_note" style="margin-top:.7rem;">
+              Local in-store service only. We do not ship or deliver.
+            </p>
+            <br />
+            <a class="btn btn-primary" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&query=11840+Av.+54,+Montreal,+QC+H1E+2J3"
+               data-i18n="open_maps">Open in Google Maps</a>
+          </div>
+          <div class="map-wrap">
+            <iframe
+              loading="lazy"
+              allowfullscreen
+              src="https://www.google.com/maps?q=11840+Av.+54,+Montreal,+QC+H1E+2J3&output=embed">
+            </iframe>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container cta">
-        <div>
-          <h2 class="section-title" style="margin-bottom:.35rem;">Need Help Choosing Tires?</h2>
-          <p>Speak directly with AutoZunis: <a href="tel:5145080508" style="text-decoration:underline;color:#b7d3ff;">514-508-0508</a></p>
-        </div>
-        <form class="newsletter" onsubmit="event.preventDefault();alert('Thanks for subscribing to AutoZunis!');">
-          <input type="email" placeholder="Your email address" required />
-          <button class="btn btn-primary" type="submit">Subscribe</button>
-        </form>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container foot">
-      <p>© 2026 AutoZunis. All rights reserved.</p>
-      <p>Phone: <a href="tel:5145080508">514-508-0508</a> • Email: sales@autozunis.com</p>
+      <p data-i18n="footer_copy">© 2026 AutoZunis. All rights reserved.</p>
+      <p><span data-i18n="footer_phone">Phone:</span> <a href="tel:5145080508">514-508-0508</a></p>
     </div>
   </footer>
 
-  <!-- Floating Cart Button -->
-  <button class="cart-toggle" id="openCart">
-    Cart <span class="cart-count" id="cartCount">0</span>
-  </button>
-
-  <!-- Cart Drawer -->
-  <div class="overlay" id="overlay"></div>
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
-    <div class="cart-head row">
-      <h3>Your Cart</h3>
-      <button id="closeCart" class="btn btn-ghost btn-sm">Close</button>
-    </div>
-    <div id="cartList" class="cart-list"></div>
-    <div class="cart-foot">
-      <div class="row" style="margin-bottom:.7rem;">
-        <strong>Total</strong>
-        <strong id="cartTotal">$0.00</strong>
-      </div>
-      <div class="row">
-        <button id="clearCart" class="btn btn-danger btn-sm">Clear</button>
-        <button id="checkoutBtn" class="btn btn-primary">Checkout</button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Checkout Modal -->
-  <div class="modal" id="checkoutModal">
-    <div class="modal-card">
-      <div class="row" style="margin-bottom:.8rem;">
-        <h3>Checkout</h3>
-        <button id="closeCheckout" class="btn btn-ghost btn-sm">X</button>
-      </div>
-      <p class="section-sub" style="margin-bottom:.9rem;">Complete your order. We’ll contact you to confirm installation and delivery details.</p>
-      <form id="checkoutForm" class="checkout-grid">
-        <input class="full" name="fullName" placeholder="Full name" required />
-        <input name="email" type="email" placeholder="Email" required />
-        <input name="phone" type="tel" placeholder="Phone number" required />
-        <input class="full" name="address" placeholder="Street address" required />
-        <input name="city" placeholder="City" required />
-        <input name="postal" placeholder="Postal code" required />
-        <textarea class="full" name="notes" placeholder="Notes (vehicle, preferred install date, etc.)"></textarea>
-        <div class="modal-actions full">
-          <button type="button" id="cancelCheckout" class="btn btn-ghost">Cancel</button>
-          <button type="submit" class="btn btn-primary">Place Order</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <script>
+    const i18n = {
+      en: {
+        nav_shop: "Shop",
+        nav_services: "Services",
+        nav_location: "Location",
+        nav_call: "Call 514-508-0508",
+        hero_kicker: "Local tire experts in Montreal",
+        hero_title: "In-Store Tire Sales at AutoZunis",
+        hero_desc: "We are a local shop. No shipping or delivery. Visit us at 11840 Av. 54, Montreal, QC H1E 2J3.",
+        hero_shop: "Browse Tires",
+        hero_call: "Call AutoZunis",
+        stat_models: "Tire models",
+        stat_local: "Montreal shop",
+        stat_week: "Open weekly",
+        catalog_title: "Top-Selling Tires",
+        catalog_sub: "Filter by vehicle type, season, or name.",
+        filter_all_vehicle: "All Vehicle Types",
+        filter_car: "Car",
+        filter_suv: "SUV",
+        filter_truck: "Truck",
+        filter_all_season: "All Seasons",
+        filter_allseason: "All-Season",
+        filter_winter: "Winter",
+        filter_performance: "Performance",
+        filter_offroad: "Off-Road",
+        clear_filters: "Clear Filters",
+        services_title: "In-Shop Services",
+        service_1_title: "Installation & Balancing",
+        service_1_desc: "Professional tire mounting and balancing done on-site.",
+        service_2_title: "Alignment & Rotation",
+        service_2_desc: "Keep your tires performing longer with maintenance services.",
+        service_3_title: "Local Pickup Appointments",
+        service_3_desc: "Book your visit and pick up in-store. No shipping or delivery available.",
+        location_title: "Visit Our Shop",
+        address_label: "Address:",
+        phone_label: "Phone:",
+        local_note: "Local in-store service only. We do not ship or deliver.",
+        open_maps: "Open in Google Maps",
+        footer_copy: "© 2026 AutoZunis. All rights reserved.",
+        footer_phone: "Phone:",
+        no_results: "No tires match your filters.",
+        vehicle_label: "Vehicle",
+        search_placeholder: "Search tire name...",
+        season_labels: {
+          "all-season": "All-Season",
+          "winter": "Winter",
+          "performance": "Performance",
+          "off-road": "Off-Road"
+        }
+      },
+      fr: {
+        nav_shop: "Boutique",
+        nav_services: "Services",
+        nav_location: "Emplacement",
+        nav_call: "Appelez 514-508-0508",
+        hero_kicker: "Experts locaux du pneu à Montréal",
+        hero_title: "Vente de pneus en magasin chez AutoZunis",
+        hero_desc: "Nous sommes un magasin local. Aucune expédition ni livraison. Visitez-nous au 11840 Av. 54, Montréal, QC H1E 2J3.",
+        hero_shop: "Voir les pneus",
+        hero_call: "Appeler AutoZunis",
+        stat_models: "Modèles de pneus",
+        stat_local: "Magasin à Montréal",
+        stat_week: "Ouvert chaque semaine",
+        catalog_title: "Pneus les plus vendus",
+        catalog_sub: "Filtrez par type de véhicule, saison ou nom.",
+        filter_all_vehicle: "Tous les véhicules",
+        filter_car: "Voiture",
+        filter_suv: "VUS",
+        filter_truck: "Camion",
+        filter_all_season: "Toutes les saisons",
+        filter_allseason: "Quatre saisons",
+        filter_winter: "Hiver",
+        filter_performance: "Performance",
+        filter_offroad: "Hors route",
+        clear_filters: "Effacer les filtres",
+        services_title: "Services en magasin",
+        service_1_title: "Installation et équilibrage",
+        service_1_desc: "Montage et équilibrage professionnels sur place.",
+        service_2_title: "Alignement et permutation",
+        service_2_desc: "Prolongez la performance de vos pneus avec l'entretien.",
+        service_3_title: "Rendez-vous de ramassage local",
+        service_3_desc: "Réservez votre visite et ramassez en magasin. Aucune livraison ni expédition.",
+        location_title: "Visitez notre magasin",
+        address_label: "Adresse :",
+        phone_label: "Téléphone :",
+        local_note: "Service local en magasin seulement. Nous ne faisons ni livraison ni expédition.",
+        open_maps: "Ouvrir dans Google Maps",
+        footer_copy: "© 2026 AutoZunis. Tous droits réservés.",
+        footer_phone: "Téléphone :",
+        no_results: "Aucun pneu ne correspond à vos filtres.",
+        vehicle_label: "Véhicule",
+        search_placeholder: "Rechercher un pneu...",
+        season_labels: {
+          "all-season": "Quatre saisons",
+          "winter": "Hiver",
+          "performance": "Performance",
+          "off-road": "Hors route"
+        }
+      }
+    };
+
     const products = [
-      { id: 1, name: "RoadMax A/S Pro", season: "all-season", vehicle: "car", price: 129, oldPrice: 159, desc: "Quiet ride with long tread life." },
-      { id: 2, name: "Velocity Sport X", season: "performance", vehicle: "car", price: 179, oldPrice: 209, desc: "High-speed stability and corner grip." },
-      { id: 3, name: "SnowGrip Arctic 9", season: "winter", vehicle: "suv", price: 149, oldPrice: 189, desc: "Strong snow traction and safer braking." },
-      { id: 4, name: "TrailForce AT Plus", season: "off-road", vehicle: "truck", price: 199, oldPrice: 239, desc: "Rugged all-terrain durability." },
-      { id: 5, name: "CityRide Comfort", season: "all-season", vehicle: "suv", price: 139, oldPrice: 169, desc: "Smooth highway handling for SUVs." },
-      { id: 6, name: "WinterEdge Pro", season: "winter", vehicle: "truck", price: 189, oldPrice: 229, desc: "Heavy-duty winter control for trucks." },
-      { id: 7, name: "Apex Track One", season: "performance", vehicle: "suv", price: 219, oldPrice: 259, desc: "Aggressive grip and sporty feel." },
-      { id: 8, name: "MudClaw XT", season: "off-road", vehicle: "truck", price: 229, oldPrice: 279, desc: "Deep tread blocks for tough terrain." }
+      { name: "RoadMax A/S Pro", season: "all-season", vehicle: "car", price: 129, oldPrice: 159, descEN: "Quiet ride with long tread life.", descFR: "Conduite silencieuse avec longue durée de vie." },
+      { name: "Velocity Sport X", season: "performance", vehicle: "car", price: 179, oldPrice: 209, descEN: "High-speed stability and corner grip.", descFR: "Stabilité haute vitesse et excellente adhérence." },
+      { name: "SnowGrip Arctic 9", season: "winter", vehicle: "suv", price: 149, oldPrice: 189, descEN: "Strong snow traction and safer braking.", descFR: "Forte traction sur neige et freinage plus sûr." },
+      { name: "TrailForce AT Plus", season: "off-road", vehicle: "truck", price: 199, oldPrice: 239, descEN: "Rugged all-terrain durability.", descFR: "Durabilité robuste tout-terrain." },
+      { name: "CityRide Comfort", season: "all-season", vehicle: "suv", price: 139, oldPrice: 169, descEN: "Smooth highway handling for SUVs.", descFR: "Conduite confortable sur autoroute pour VUS." },
+      { name: "WinterEdge Pro", season: "winter", vehicle: "truck", price: 189, oldPrice: 229, descEN: "Heavy-duty winter control for trucks.", descFR: "Contrôle hivernal robuste pour camions." },
+      { name: "Apex Track One", season: "performance", vehicle: "suv", price: 219, oldPrice: 259, descEN: "Aggressive grip and sporty feel.", descFR: "Adhérence agressive et sensation sportive." },
+      { name: "MudClaw XT", season: "off-road", vehicle: "truck", price: 229, oldPrice: 279, descEN: "Deep tread blocks for tough terrain.", descFR: "Blocs profonds pour terrains difficiles." }
     ];
 
-    const state = { cart: [] };
+    let currentLang = "en";
 
-    const productGrid = document.getElementById("productGrid");
     const filterVehicle = document.getElementById("filterVehicle");
     const filterSeason = document.getElementById("filterSeason");
     const filterSearch = document.getElementById("filterSearch");
     const clearFilters = document.getElementById("clearFilters");
+    const productGrid = document.getElementById("productGrid");
+    const langEN = document.getElementById("langEN");
+    const langFR = document.getElementById("langFR");
 
-    const cartDrawer = document.getElementById("cartDrawer");
-    const overlay = document.getElementById("overlay");
-    const cartList = document.getElementById("cartList");
-    const cartTotal = document.getElementById("cartTotal");
-    const cartCount = document.getElementById("cartCount");
+    function formatPrice(v) { return `$${v.toFixed(2)}`; }
+    function t(key) { return i18n[currentLang][key]; }
 
-    const openCartBtn = document.getElementById("openCart");
-    const openCartTop = document.getElementById("openCartTop");
-    const closeCartBtn = document.getElementById("closeCart");
-    const clearCartBtn = document.getElementById("clearCart");
-    const checkoutBtn = document.getElementById("checkoutBtn");
+    function detectLang() {
+      const saved = localStorage.getItem("autozunis_lang");
+      if (saved === "en" || saved === "fr") return saved;
+      const navLang = (navigator.language || "en").toLowerCase();
+      return navLang.startsWith("fr") ? "fr" : "en";
+    }
 
-    const checkoutModal = document.getElementById("checkoutModal");
-    const closeCheckout = document.getElementById("closeCheckout");
-    const cancelCheckout = document.getElementById("cancelCheckout");
-    const checkoutForm = document.getElementById("checkoutForm");
+    function applyI18n() {
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        const value = i18n[currentLang][key];
+        if (value) el.textContent = value;
+      });
 
-    function formatPrice(v){ return `$${v.toFixed(2)}`; }
+      filterSearch.placeholder = t("search_placeholder");
+
+      langEN.classList.toggle("active", currentLang === "en");
+      langFR.classList.toggle("active", currentLang === "fr");
+
+      localStorage.setItem("autozunis_lang", currentLang);
+      renderProducts();
+    }
 
     function getFilteredProducts() {
       const v = filterVehicle.value;
       const s = filterSeason.value;
       const q = filterSearch.value.trim().toLowerCase();
+
       return products.filter(p => {
         const okVehicle = v === "all" || p.vehicle === v;
         const okSeason = s === "all" || p.season === s;
@@ -457,184 +447,43 @@
       productGrid.innerHTML = "";
 
       if (!list.length) {
-        productGrid.innerHTML = `<p class="meta">No tires match your filters. Try clearing filters.</p>`;
+        productGrid.innerHTML = `<p class="meta">${t("no_results")}</p>`;
         return;
       }
 
       list.forEach(p => {
+        const desc = currentLang === "fr" ? p.descFR : p.descEN;
+        const seasonLabel = i18n[currentLang].season_labels[p.season] || p.season;
         const card = document.createElement("article");
         card.className = "card";
         card.innerHTML = `
           <div class="card-top"><div class="tire"></div></div>
           <div class="card-body">
-            <span class="badge">${labelize(p.season)}</span>
+            <span class="badge">${seasonLabel}</span>
             <h3>${p.name}</h3>
-            <p class="meta">${p.desc}</p>
-            <p class="meta">Vehicle: ${p.vehicle.toUpperCase()}</p>
+            <p class="meta">${desc}</p>
+            <p class="meta">${t("vehicle_label")}: ${p.vehicle.toUpperCase()}</p>
             <div class="price">${formatPrice(p.price)} <span class="old">${formatPrice(p.oldPrice)}</span></div>
-            <div class="actions">
-              <button class="btn btn-primary" data-add="${p.id}">Add to Cart</button>
-              <input class="qty" type="number" value="1" min="1" data-qty="${p.id}" />
-            </div>
           </div>
         `;
         productGrid.appendChild(card);
       });
-
-      productGrid.querySelectorAll("[data-add]").forEach(btn=>{
-        btn.addEventListener("click",()=>{
-          const id = Number(btn.getAttribute("data-add"));
-          const qtyInput = productGrid.querySelector(`[data-qty="${id}"]`);
-          const qty = Math.max(1, Number(qtyInput.value) || 1);
-          addToCart(id, qty);
-        });
-      });
     }
 
-    function labelize(v){
-      if(v === "all-season") return "All-Season";
-      if(v === "off-road") return "Off-Road";
-      return v.charAt(0).toUpperCase() + v.slice(1);
-    }
-
-    function addToCart(productId, qty) {
-      const item = state.cart.find(i => i.id === productId);
-      if (item) item.qty += qty;
-      else state.cart.push({ id: productId, qty });
-      renderCart();
-      openCart();
-    }
-
-    function updateCartQty(productId, qty){
-      const item = state.cart.find(i=>i.id===productId);
-      if(!item) return;
-      item.qty = Math.max(1, qty);
-      renderCart();
-    }
-
-    function removeFromCart(productId){
-      state.cart = state.cart.filter(i=>i.id!==productId);
-      renderCart();
-    }
-
-    function clearCart(){
-      state.cart = [];
-      renderCart();
-    }
-
-    function cartTotals(){
-      let count = 0, total = 0;
-      state.cart.forEach(i=>{
-        const p = products.find(x=>x.id===i.id);
-        if(!p) return;
-        count += i.qty;
-        total += p.price * i.qty;
-      });
-      return {count,total};
-    }
-
-    function renderCart(){
-      cartList.innerHTML = "";
-      const {count,total} = cartTotals();
-      cartCount.textContent = count;
-      cartTotal.textContent = formatPrice(total);
-
-      if(!state.cart.length){
-        cartList.innerHTML = `<p class="empty">Your cart is empty.</p>`;
-        return;
-      }
-
-      state.cart.forEach(i=>{
-        const p = products.find(x=>x.id===i.id);
-        if(!p) return;
-        const row = document.createElement("div");
-        row.className = "cart-item";
-        row.innerHTML = `
-          <div>
-            <strong>${p.name}</strong><br/>
-            <small>${formatPrice(p.price)} each</small>
-          </div>
-          <div class="cart-controls">
-            <input type="number" min="1" value="${i.qty}" data-cart-qty="${i.id}" />
-            <button class="btn btn-danger btn-sm" data-remove="${i.id}">Remove</button>
-          </div>
-        `;
-        cartList.appendChild(row);
-      });
-
-      cartList.querySelectorAll("[data-cart-qty]").forEach(input=>{
-        input.addEventListener("change",()=>{
-          const id = Number(input.getAttribute("data-cart-qty"));
-          const qty = Math.max(1, Number(input.value) || 1);
-          updateCartQty(id, qty);
-        });
-      });
-
-      cartList.querySelectorAll("[data-remove]").forEach(btn=>{
-        btn.addEventListener("click",()=>{
-          const id = Number(btn.getAttribute("data-remove"));
-          removeFromCart(id);
-        });
-      });
-    }
-
-    function openCart(){
-      cartDrawer.classList.add("open");
-      overlay.classList.add("show");
-    }
-    function closeCart(){
-      cartDrawer.classList.remove("open");
-      overlay.classList.remove("show");
-    }
-
-    function openCheckout(){
-      if(!state.cart.length){
-        alert("Your cart is empty.");
-        return;
-      }
-      checkoutModal.classList.add("show");
-    }
-    function closeCheckoutModal(){
-      checkoutModal.classList.remove("show");
-    }
-
-    // Filter events
-    [filterVehicle, filterSeason].forEach(el=>el.addEventListener("change", renderProducts));
+    [filterVehicle, filterSeason].forEach(el => el.addEventListener("change", renderProducts));
     filterSearch.addEventListener("input", renderProducts);
-    clearFilters.addEventListener("click", ()=>{
+    clearFilters.addEventListener("click", () => {
       filterVehicle.value = "all";
       filterSeason.value = "all";
       filterSearch.value = "";
       renderProducts();
     });
 
-    // Cart events
-    openCartBtn.addEventListener("click", openCart);
-    openCartTop.addEventListener("click", openCart);
-    closeCartBtn.addEventListener("click", closeCart);
-    overlay.addEventListener("click", closeCart);
-    clearCartBtn.addEventListener("click", clearCart);
-    checkoutBtn.addEventListener("click", openCheckout);
+    langEN.addEventListener("click", () => { currentLang = "en"; applyI18n(); });
+    langFR.addEventListener("click", () => { currentLang = "fr"; applyI18n(); });
 
-    // Checkout events
-    closeCheckout.addEventListener("click", closeCheckoutModal);
-    cancelCheckout.addEventListener("click", closeCheckoutModal);
-    checkoutForm.addEventListener("submit", (e)=>{
-      e.preventDefault();
-      const data = new FormData(checkoutForm);
-      const name = data.get("fullName");
-      const {total} = cartTotals();
-
-      alert(`Thank you, ${name}! Your AutoZunis order (${formatPrice(total)}) has been placed. We will contact you shortly at 514-508-0508 support line if needed.`);
-      checkoutForm.reset();
-      clearCart();
-      closeCheckoutModal();
-      closeCart();
-    });
-
-    // Init
-    renderProducts();
-    renderCart();
+    currentLang = detectLang();
+    applyI18n();
   </script>
 </body>
 </html>
