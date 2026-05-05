@@ -1,1 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TireHub | Premium Tire Sales</title>
+  <meta name="description" content="Shop premium tires for cars, SUVs, and trucks at unbeatable prices." />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --muted: #8b949e;
+      --text: #e6edf3;
+      --primary: #2f81f7;
+      --accent: #3fb950;
+      --danger: #f85149;
+      --border: #30363d;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 14px;
+      --max: 1200px;
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #0d1117 0%, #111827 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin-inline: auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(13,17,23,.85);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .logo-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 30% 30%, #fff 0, #bfc7d5 16%, #5b6472 40%, #1f2937 80%);
+      color: #fff;
+      font-size: .8rem;
+      border: 2px solid #d1d5db;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.15rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 500;
+      transition: .2s ease;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: .72rem 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover { filter: brightness(1.08); }
+    .btn-ghost {
+      border-color: var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+    .btn-ghost:hover { background: #1f2937; }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0 3.5rem;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .8rem;
+      margin-bottom: .8rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.12;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .trust {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(160deg, #151b23, #0f172a);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .wheel {
+      width: 100%;
+      aspect-ratio: 1/1;
+      max-width: 360px;
+      margin-inline: auto;
+      border-radius: 50%;
+      border: 12px solid #cbd5e1;
+      background:
+        radial-gradient(circle at center, #111827 0 20%, #374151 20% 32%, #0f172a 32% 48%, #64748b 48% 54%, #0b1220 54% 100%);
+      position: relative;
+      animation: spin 12s linear infinite;
+    }
+
+    .wheel::before, .wheel::after {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border-radius: 50%;
+      border: 2px dashed rgba(255,255,255,.15);
+    }
+
+    .wheel::after {
+      inset: 34%;
+      border-style: solid;
+      border-color: rgba(255,255,255,.1);
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .stats {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .7rem;
+    }
+
+    .stat {
+      background: #111827;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .7rem;
+      text-align: center;
+    }
+
+    .stat h3 { font-size: 1.1rem; }
+    .stat p { color: var(--muted); font-size: .8rem; }
+
+    /* Sections */
+    section {
+      padding: 3.5rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: .6rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Catalog */
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: .8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .filters select, .filters input {
+      width: 100%;
+      padding: .7rem .8rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #0b1220;
+      color: var(--text);
+      outline: none;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-top {
+      padding: 1rem;
+      background: linear-gradient(180deg, #1b2330 0%, #111827 100%);
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+    }
+
+    .tire-illustration {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 8px solid #d1d5db;
+      background:
+        radial-gradient(circle at center, #0f172a 0 21%, #334155 21% 33%, #0b1320 33% 47%, #4b5563 47% 53%, #0b1320 53% 100%);
+    }
+
+    .card-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+      flex: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: .72rem;
+      padding: .2rem .5rem;
+      border-radius: 999px;
+      border: 1px solid #234;
+      color: #93c5fd;
+      background: rgba(59,130,246,.12);
+      width: fit-content;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: .2rem;
+    }
+
+    .old {
+      text-decoration: line-through;
+      color: var(--muted);
+      font-size: .9rem;
+      margin-left: .3rem;
+      font-weight: 400;
+    }
+
+    .card-actions {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: .55rem;
+    }
+
+    .qty {
+      width: 65px;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0b1220;
+      color: var(--text);
+    }
+
+    /* Services */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1rem;
+    }
+
+    .service {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+
+    .service h3 { margin-bottom: .45rem; }
+    .service p { color: var(--muted); }
+
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1rem;
+    }
+
+    blockquote {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 1rem;
+      color: #dbe4ee;
+    }
+
+    blockquote footer {
+      margin-top: .7rem;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* CTA */
+    .cta {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(130deg, #0b1220, #172554);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .cta p { color: #c5d3e8; }
+
+    .newsletter {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .newsletter input {
+      min-width: 220px;
+      padding: .72rem .8rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #0b1220;
+      color: var(--text);
+    }
+
+    footer {
+      margin-top: 2.4rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-wrap { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .filters { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .service-grid, .testimonials { grid-template-columns: 1fr; }
+      .cta { grid-template-columns: 1fr; }
+      .newsletter { justify-content: flex-start; }
+    }
+
+    @media (max-width: 620px) {
+      nav ul { display: none; }
+      .product-grid { grid-template-columns: 1fr; }
+      .filters { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home">
+        <span class="logo-badge">TH</span>
+        <span>TireHub</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#catalog">Shop Tires</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="btn btn-primary" href="#catalog">Buy Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div>
+          <p class="kicker">Drive with confidence</p>
+          <h1>Premium Tires at <span style="color: var(--primary)">Unbeatable Prices</span></h1>
+          <p>
+            Find the perfect tires for your car, SUV, or truck. All-season, winter, performance, and off-road options from top brands—with fast installation and nationwide shipping.
+          </p>
+          <div class="hero-cta">
+            <a href="#catalog" class="btn btn-primary">Shop Tire Deals</a>
+            <a href="#services" class="btn btn-ghost">Book Installation</a>
+          </div>
+          <div class="trust">
+            <span>✔ Free shipping over $399</span>
+            <span>✔ 30-day return policy</span>
+            <span>✔ Certified installation partners</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="wheel" aria-label="Rotating tire visual"></div>
+          <div class="stats">
+            <div class="stat">
+              <h3>2,500+</h3>
+              <p>Tire models</p>
+            </div>
+            <div class="stat">
+              <h3>4.9/5</h3>
+              <p>Customer rating</p>
+            </div>
+            <div class="stat">
+              <h3>48h</h3>
+              <p>Avg. ship time</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="catalog">
+      <div class="container">
+        <h2 class="section-title">Top-Selling Tires</h2>
+        <p class="section-sub">Browse our best deals and choose the right set for your vehicle.</p>
+
+        <div class="filters">
+          <select>
+            <option>Vehicle Type</option>
+            <option>Car</option>
+            <option>SUV</option>
+            <option>Truck</option>
+          </select>
+          <select>
+            <option>Season</option>
+            <option>All-Season</option>
+            <option>Summer</option>
+            <option>Winter</option>
+          </select>
+          <select>
+            <option>Size</option>
+            <option>205/55R16</option>
+            <option>225/45R17</option>
+            <option>265/70R17</option>
+          </select>
+          <input type="search" placeholder="Search by brand or model…" />
+        </div>
+
+        <div class="product-grid">
+          <article class="card">
+            <div class="card-top"><div class="tire-illustration"></div></div>
+            <div class="card-body">
+              <span class="badge">All-Season</span>
+              <h3>RoadMax A/S Pro</h3>
+              <p>Great grip, quiet ride, and long tread life for daily driving.</p>
+              <div class="price">$129 <span class="old">$159</span></div>
+              <div class="card-actions">
+                <button class="btn btn-primary">Add to Cart</button>
+                <input class="qty" type="number" value="1" min="1" />
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-top"><div class="tire-illustration"></div></div>
+            <div class="card-body">
+              <span class="badge">Performance</span>
+              <h3>Velocity Sport X</h3>
+              <p>High-speed control and sharp cornering for sporty handling.</p>
+              <div class="price">$179 <span class="old">$209</span></div>
+              <div class="card-actions">
+                <button class="btn btn-primary">Add to Cart</button>
+                <input class="qty" type="number" value="1" min="1" />
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-top"><div class="tire-illustration"></div></div>
+            <div class="card-body">
+              <span class="badge">Winter</span>
+              <h3>SnowGrip Arctic 9</h3>
+              <p>Advanced snow traction and braking in freezing conditions.</p>
+              <div class="price">$149 <span class="old">$189</span></div>
+              <div class="card-actions">
+                <button class="btn btn-primary">Add to Cart</button>
+                <input class="qty" type="number" value="1" min="1" />
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-top"><div class="tire-illustration"></div></div>
+            <div class="card-body">
+              <span class="badge">Off-Road</span>
+              <h3>TrailForce AT Plus</h3>
+              <p>Rugged all-terrain durability for gravel, mud, and highways.</p>
+              <div class="price">$199 <span class="old">$239</span></div>
+              <div class="card-actions">
+                <button class="btn btn-primary">Add to Cart</button>
+                <input class="qty" type="number" value="1" min="1" />
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Tire Services</h2>
+        <p class="section-sub">Everything you need after checkout—handled by certified pros.</p>
+        <div class="service-grid">
+          <article class="service">
+            <h3>Installation & Balancing</h3>
+            <p>Book nearby install partners and get your tires professionally mounted and balanced.</p>
+          </article>
+          <article class="service">
+            <h3>Rotation & Alignment</h3>
+            <p>Extend tire life with routine rotation and precision alignment packages.</p>
+          </article>
+          <article class="service">
+            <h3>Road Hazard Protection</h3>
+            <p>Optional coverage for punctures and impact damage, with quick replacements.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <h2 class="section-title">What Customers Say</h2>
+        <p class="section-sub">Trusted by drivers across the country.</p>
+        <div class="testimonials">
+          <blockquote>
+            “Smooth purchase, fast delivery, and my SUV feels brand new. Great prices too.”
+            <footer>— Jessica R., Texas</footer>
+          </blockquote>
+          <blockquote>
+            “Booked installation in minutes. Everything was done same week.”
+            <footer>— Mike T., California</footer>
+          </blockquote>
+          <blockquote>
+            “Best winter tires I’ve owned. Better traction immediately.”
+            <footer>— David L., Colorado</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container cta">
+        <div>
+          <h2 class="section-title" style="margin-bottom:.4rem;">Get Exclusive Tire Deals</h2>
+          <p>Join our newsletter for seasonal discounts, installation promos, and new arrivals.</p>
+        </div>
+        <form class="newsletter" onsubmit="event.preventDefault(); alert('Thanks for subscribing to TireHub!');">
+          <input type="email" placeholder="Your email address" required />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <p>© 2026 TireHub. All rights reserved.</p>
+      <p>Phone: (800) 555-0199 • Email: sales@tirehub.com</p>
+    </div>
+  </footer>
+</body>
+</html>
