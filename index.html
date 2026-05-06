@@ -7,7 +7,32 @@
   <meta
     name="description"
     content="LE CENTRE DU PNEU AUTOZUNIS à Montréal: pneus, installation, alignement et service local. Appelez maintenant au 514-508-0508."
+    content="LE CENTRE DU PNEU AUTOZUNIS à Montréal: pneus, installation, alignement et service local. Offres en magasin, attente rapide et appel direct au 514-508-0508."
   />
+  <meta name="theme-color" content="#0a1020" />
+  <meta property="og:title" content="LE CENTRE DU PNEU AUTOZUNIS | Montréal" />
+  <meta property="og:description" content="Centre de pneus local à Montréal. Service en magasin, conseils rapides, offres en personne et appel direct au 514-508-0508." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=1200&q=80" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "LE CENTRE DU PNEU AUTOZUNIS",
+      "telephone": "+15145080508",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "11840 Av. 54",
+        "addressLocality": "Montreal",
+        "addressRegion": "QC",
+        "postalCode": "H1E 2J3",
+        "addressCountry": "CA"
+      },
+      "areaServed": "Montreal",
+      "url": "https://www.google.com/maps/search/?api=1&query=11840+Av.+54,+Montreal,+QC+H1E+2J3",
+      "priceRange": "Contact for in-store deals"
+    }
+  </script>
 
   <style>
     :root{
@@ -18,11 +43,10 @@
       --muted:#a9bbdd;
       --primary:#2f80ff;
       --accent:#22c55e;
-      --orange:#f59e0b;
-      --pink:#ec4899;
-      --cyan:#06b6d4;
-      --purple:#8b5cf6;
       --danger:#ef4444;
+      --orange:#f59e0b;
+      --cyan:#06b6d4;
+      --gold:#facc15;
       --border:#2a3f67;
       --radius:14px;
       --shadow:0 12px 28px rgba(0,0,0,.32);
@@ -41,6 +65,9 @@
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
     .container{width:min(92%,var(--max));margin-inline:auto}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .skip-link{position:absolute;left:-999px;top:1rem;background:var(--gold);color:#111827;padding:.6rem .9rem;border-radius:8px;font-weight:900;z-index:999}
+    .skip-link:focus{left:1rem}
 
     .btn{
       border:1px solid transparent;
@@ -58,14 +85,25 @@
     .btn-ghost:hover{background:#1a2a50}
     .btn-call{background:var(--accent);color:#05200d}
     .btn-call:hover{filter:brightness(1.05)}
-    .btn-primary{background:linear-gradient(135deg,var(--primary),#65a5ff);color:white;box-shadow:0 10px 22px rgba(47,128,255,.22)}
+    .btn-primary{background:var(--primary);color:white;box-shadow:0 8px 18px rgba(47,128,255,.18)}
     .btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
-    .btn-ghost{border-color:#6b7fa8;background:rgba(255,255,255,.06);color:var(--text)}
+    .btn-ghost{border-color:#5b7197;background:rgba(255,255,255,.045);color:var(--text)}
     .btn-ghost:hover{background:#1a2a50;transform:translateY(-1px)}
-    .btn-call{background:linear-gradient(135deg,var(--accent),#86efac);color:#05200d;box-shadow:0 10px 24px rgba(34,197,94,.28)}
-    .btn-call:hover{filter:brightness(1.05);transform:translateY(-1px)}
-    .btn-map{background:linear-gradient(135deg,var(--orange),#facc15);color:#241400;box-shadow:0 10px 24px rgba(245,158,11,.28)}
-    .btn-map:hover{filter:brightness(1.05);transform:translateY(-1px)}
+    .btn-call{background:var(--accent);color:#05200d;box-shadow:0 8px 20px rgba(34,197,94,.24)}
+    .btn-call:hover{filter:brightness(1.06);transform:translateY(-1px)}
+    .btn-map{background:var(--gold);color:#241400;box-shadow:0 8px 20px rgba(250,204,21,.20)}
+    .btn-map:hover{filter:brightness(1.04);transform:translateY(-1px)}
+
+    .topbar{
+      background:linear-gradient(90deg,rgba(34,197,94,.2),rgba(47,128,255,.18));
+      border-bottom:1px solid rgba(255,255,255,.08);
+      color:#dfffea;
+      font-size:.92rem;
+      font-weight:800;
+      padding:.45rem 0;
+      text-align:center;
+    }
+    .topbar a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 
     /* Header */
     header{
@@ -149,22 +187,18 @@
     .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
     .hero-note{
       border:1px dashed #48669d;
-      border:1px dashed #facc15;
       padding:.65rem .8rem;
       border-radius:10px;
       color:#d6e4ff;
       background:rgba(47,128,255,.08);
-      color:#fff3bf;
-      background:rgba(245,158,11,.12);
       max-width:fit-content;
       font-weight:700;
-      font-weight:800;
     }
-    .deal-row{display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0 1.15rem}
-    .deal-chip{border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:.42rem .68rem;font-size:.86rem;font-weight:900}
-    .deal-green{background:rgba(34,197,94,.16);color:#bbf7d0;border-color:rgba(34,197,94,.45)}
-    .deal-orange{background:rgba(245,158,11,.17);color:#fde68a;border-color:rgba(245,158,11,.48)}
-    .deal-cyan{background:rgba(6,182,212,.16);color:#a5f3fc;border-color:rgba(6,182,212,.45)}
+    .deal-row{display:flex;gap:.55rem;flex-wrap:wrap;margin:.95rem 0 1.1rem}
+    .deal-chip{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:.42rem .68rem;font-size:.86rem;font-weight:850}
+    .deal-green{background:rgba(34,197,94,.13);color:#bbf7d0;border-color:rgba(34,197,94,.36)}
+    .deal-orange{background:rgba(245,158,11,.13);color:#fde68a;border-color:rgba(245,158,11,.38)}
+    .deal-cyan{background:rgba(6,182,212,.12);color:#a5f3fc;border-color:rgba(6,182,212,.34)}
 
     .hero-card{
       border:1px solid var(--border);
@@ -190,7 +224,7 @@
       border:1px solid var(--border);
       border-radius:10px;
       background:#0f1b36;
-@@ -174,225 +187,274 @@
+@@ -174,57 +223,77 @@
     .stat span{font-size:.8rem;color:var(--muted)}
 
     /* Shared sections */
@@ -221,10 +255,8 @@
       object-fit:cover;
       transition:transform .25s ease;
     }
-    .card:hover img{transform:scale(1.04)}
-    .card:nth-child(1){border-color:rgba(34,197,94,.55)}
-    .card:nth-child(2){border-color:rgba(245,158,11,.55)}
-    .card:nth-child(3){border-color:rgba(6,182,212,.55)}
+    .card:hover img{transform:scale(1.035)}
+    .card:hover{border-color:#3c5f96}
     .card-body{padding:1rem}
     .card-body h3{margin-bottom:.35rem}
     .card-body p{color:var(--muted)}
@@ -234,19 +266,17 @@
       grid-template-columns:1fr 1fr;
       gap:1rem;
       align-items:center;
-      border:1px solid rgba(245,158,11,.55);
+      border:1px solid #344d78;
       border-radius:var(--radius);
-      background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(47,128,255,.14));
+      background:linear-gradient(135deg,rgba(47,128,255,.12),rgba(34,197,94,.08));
       padding:1rem;
       box-shadow:var(--shadow);
       margin-bottom:1rem;
     }
-    .warehouse-banner img{width:100%;height:260px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.18)}
+    .warehouse-banner img{width:100%;height:280px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.16)}
     .warehouse-points{display:grid;gap:.55rem;margin-top:.9rem}
-    .warehouse-point{padding:.6rem .7rem;border-radius:10px;font-weight:900;border:1px solid rgba(255,255,255,.14)}
-    .warehouse-point:nth-child(1){background:rgba(34,197,94,.15);color:#bbf7d0}
-    .warehouse-point:nth-child(2){background:rgba(245,158,11,.15);color:#fde68a}
-    .warehouse-point:nth-child(3){background:rgba(6,182,212,.14);color:#a5f3fc}
+    .warehouse-point{padding:.6rem .7rem;border-radius:10px;font-weight:850;border:1px solid rgba(255,255,255,.12);background:#0f1b36;color:#dbe7ff}
+    .warehouse-point strong{color:#bbf7d0}
 
     /* Location focus */
     .location-wrap{
@@ -273,50 +303,7 @@
       border:1px solid #3f629e;
       background:rgba(47,128,255,.13);
       color:#bed6ff;
-      border:1px solid #facc15;
-      background:rgba(245,158,11,.16);
-      color:#fde68a;
-      padding:.28rem .6rem;
-      border-radius:999px;
-      font-size:.78rem;
-      font-weight:800;
-      margin-bottom:.65rem;
-    }
-    .call-box{
-      margin-top:1rem;
-      border:1px solid #2f7a4f;
-      background:rgba(34,197,94,.12);
-      border:1px solid #22c55e;
-      background:linear-gradient(135deg,rgba(34,197,94,.18),rgba(6,182,212,.10));
-      border-radius:12px;
-      padding:.8rem;
-    }
-    .call-big{
-      font-size:1.35rem;
-      font-weight:900;
-      letter-spacing:.02em;
-      margin:.15rem 0 .55rem;
-      color:#b8ffd0;
-    }
-
-    .map{
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      min-height:340px;
-    }
-    .map iframe{width:100%;height:100%;min-height:340px;border:0}
-
-    /* Top contender CTA strip */
-    .cta-strip{
-      border:1px solid #3a5e98;
-      background:linear-gradient(135deg,rgba(47,128,255,.2),rgba(34,197,94,.18));
-      border:1px solid #facc15;
-      background:linear-gradient(135deg,rgba(245,158,11,.22),rgba(34,197,94,.18),rgba(47,128,255,.18));
-      border-radius:var(--radius);
-      padding:1rem;
-      display:grid;
+@@ -268,131 +337,159 @@
       grid-template-columns:1.3fr .7fr;
       gap:1rem;
       align-items:center;
@@ -353,9 +340,14 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Passer au contenu</a>
+  <div class="topbar">
+    <div class="container" data-i18n="topbar">Offres en magasin • objectif: moins de 5 minutes • <a href="tel:5145080508">514-508-0508</a></div>
+  </div>
   <header>
     <div class="container nav">
       <a class="brand" href="#accueil">
+      <a class="brand" href="#contenu">
         <span class="brand-wheel"></span>
         <span>LE CENTRE DU PNEU AUTOZUNIS</span>
       </a>
@@ -378,14 +370,18 @@
   </header>
 
   <main id="accueil">
+  <main id="contenu">
     <section class="hero">
       <div class="container hero-grid">
         <div>
           <span class="kicker" data-i18n="hero_kicker">Votre référence locale à Montréal</span>
           <h1 data-i18n="hero_title">LE CENTRE DU PNEU AUTOZUNIS — Un choix de premier plan</h1>
+          <span class="kicker" data-i18n="hero_kicker">Votre centre de pneus local à Montréal</span>
+          <h1 data-i18n="hero_title">Pneus, installation et conseils rapides — en magasin seulement</h1>
           <p data-i18n="hero_desc">
             Pour pneus, installation et service rapide en magasin, faites confiance à une équipe locale reconnue.
             Venez nous voir au 11840 Av. 54, Montreal, QC H1E 2J3.
+            LE CENTRE DU PNEU AUTOZUNIS vous accueille pour des offres en personne, un service rapide et une équipe prête à vous aider sans livraison ni expédition.
           </p>
 
           <div class="hero-cta">
@@ -400,8 +396,8 @@
 
           <div class="deal-row" aria-label="Promotions en magasin">
             <span class="deal-chip deal-green" data-i18n="deal_1">Offres en personne</span>
-            <span class="deal-chip deal-orange" data-i18n="deal_2">Attente moins de 5 minutes</span>
-            <span class="deal-chip deal-cyan" data-i18n="deal_3">Entrepôt de pneus local</span>
+            <span class="deal-chip deal-orange" data-i18n="deal_2">Objectif: moins de 5 minutes d’attente</span>
+            <span class="deal-chip deal-cyan" data-i18n="deal_3">Grand choix de pneus</span>
           </div>
 
           <div class="hero-note" data-i18n="hero_note">
@@ -438,12 +434,12 @@
       <div class="container">
         <div class="warehouse-banner">
           <div>
-            <span class="pill" data-i18n="warehouse_badge">Ambiance entrepôt pneus</span>
-            <h2 class="section-title" data-i18n="warehouse_title">Grand choix de pneus, service rapide sur place</h2>
-            <p class="section-sub" data-i18n="warehouse_desc">Passez en magasin pour des offres en personne, des recommandations rapides et une expérience efficace conçue pour vous faire repartir vite.</p>
+            <span class="pill" data-i18n="warehouse_badge">Grand choix en magasin</span>
+            <h2 class="section-title" data-i18n="warehouse_title">Une expérience de centre du pneu: simple, rapide, locale</h2>
+            <p class="section-sub" data-i18n="warehouse_desc">Venez sur place pour voir les options disponibles, recevoir une recommandation claire et profiter des offres réservées aux clients en magasin.</p>
             <div class="warehouse-points">
               <div class="warehouse-point" data-i18n="warehouse_point_1">✅ Offres en personne seulement</div>
-              <div class="warehouse-point" data-i18n="warehouse_point_2">⚡ Objectif: attente moins de 5 minutes</div>
+              <div class="warehouse-point" data-i18n="warehouse_point_2">⚡ Objectif: moins de 5 minutes d’attente</div>
               <div class="warehouse-point" data-i18n="warehouse_point_3">📍 11840 Av. 54, Montreal, QC H1E 2J3</div>
             </div>
           </div>
@@ -477,7 +473,7 @@
               alt="Pneus alignés en atelier"
             />
             <div class="card-body">
-@@ -450,50 +512,53 @@
+@@ -450,217 +547,248 @@
       </div>
     </section>
 
@@ -503,7 +499,7 @@
               <p data-i18n="call_box_title">Besoin d’aide rapidement?</p>
               <p class="call-big">514-508-0508</p>
               <a class="btn btn-call" href="tel:5145080508" data-i18n="call_box_btn">📞 Appelez maintenant</a>
-              <a class="btn btn-map" target="_blank" rel="noopener"
+              <a class="btn btn-primary" target="_blank" rel="noopener"
                  href="https://www.google.com/maps/search/?api=1&query=11840+Av.+54,+Montreal,+QC+H1E+2J3"
                  data-i18n="call_box_map">🗺️ Ouvrir Google Maps</a>
             </div>
@@ -531,7 +527,11 @@
         </div>
         <div class="cta-actions">
           <a class="btn btn-call" href="tel:5145080508" data-i18n="strip_call">📞 Appeler 514-508-0508</a>
-@@ -505,142 +570,164 @@
+          <a class="btn btn-primary" href="#emplacement" data-i18n="strip_visit">Visiter le magasin</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="container foot">
@@ -547,6 +547,7 @@
   <script>
     const i18n = {
       fr: {
+        topbar: "Offres en magasin • objectif: moins de 5 minutes • 514-508-0508",
         nav_services: "Services",
         nav_gallery: "Galerie",
         nav_location: "Emplacement",
@@ -555,13 +556,16 @@
         hero_kicker: "Votre référence locale à Montréal",
         hero_title: "LE CENTRE DU PNEU AUTOZUNIS — Un choix de premier plan",
         hero_desc: "Pour pneus, installation et service rapide en magasin, faites confiance à une équipe locale reconnue. Venez nous voir au 11840 Av. 54, Montreal, QC H1E 2J3.",
+        hero_kicker: "Votre centre de pneus local à Montréal",
+        hero_title: "Pneus, installation et conseils rapides — en magasin seulement",
+        hero_desc: "LE CENTRE DU PNEU AUTOZUNIS vous accueille pour des offres en personne, un service rapide et une équipe prête à vous aider sans livraison ni expédition.",
         hero_call_btn: "📞 Appelez maintenant",
         hero_location_btn: "Voir l'emplacement",
         hero_map_btn: "Ouvrir Google Maps",
         hero_map_btn: "🗺️ Ouvrir Google Maps",
         deal_1: "Offres en personne",
-        deal_2: "Attente moins de 5 minutes",
-        deal_3: "Entrepôt de pneus local",
+        deal_2: "Objectif: moins de 5 minutes d’attente",
+        deal_3: "Grand choix de pneus",
         hero_note: "Service local en magasin uniquement — aucune livraison / expédition.",
 
         stat_1_value: "Top local",
@@ -571,11 +575,11 @@
         stat_3_value: "514-508-0508",
         stat_3_label: "Appelez maintenant",
 
-        warehouse_badge: "Ambiance entrepôt pneus",
-        warehouse_title: "Grand choix de pneus, service rapide sur place",
-        warehouse_desc: "Passez en magasin pour des offres en personne, des recommandations rapides et une expérience efficace conçue pour vous faire repartir vite.",
+        warehouse_badge: "Grand choix en magasin",
+        warehouse_title: "Une expérience de centre du pneu: simple, rapide, locale",
+        warehouse_desc: "Venez sur place pour voir les options disponibles, recevoir une recommandation claire et profiter des offres réservées aux clients en magasin.",
         warehouse_point_1: "✅ Offres en personne seulement",
-        warehouse_point_2: "⚡ Objectif: attente moins de 5 minutes",
+        warehouse_point_2: "⚡ Objectif: moins de 5 minutes d’attente",
         warehouse_point_3: "📍 11840 Av. 54, Montreal, QC H1E 2J3",
 
         services_title: "Services pneus professionnels",
@@ -616,6 +620,7 @@
       },
 
       en: {
+        topbar: "In-store deals • goal: under 5 minutes • 514-508-0508",
         nav_services: "Services",
         nav_gallery: "Gallery",
         nav_location: "Location",
@@ -624,13 +629,16 @@
         hero_kicker: "Your local Montreal tire expert",
         hero_title: "LE CENTRE DU PNEU AUTOZUNIS — A top local contender",
         hero_desc: "For tires, installation, and fast in-store service, trust a recognized local team. Visit us at 11840 Av. 54, Montreal, QC H1E 2J3.",
+        hero_kicker: "Your local Montreal tire centre",
+        hero_title: "Tires, installation, and quick advice — in-store only",
+        hero_desc: "LE CENTRE DU PNEU AUTOZUNIS welcomes you for in-person deals, fast service, and a team ready to help with no shipping or delivery.",
         hero_call_btn: "📞 Call now",
         hero_location_btn: "See location",
         hero_map_btn: "Open Google Maps",
         hero_map_btn: "🗺️ Open Google Maps",
         deal_1: "In-person deals",
-        deal_2: "Less than 5 minute wait",
-        deal_3: "Local tire warehouse",
+        deal_2: "Goal: under 5 minute wait",
+        deal_3: "Large tire selection",
         hero_note: "Local in-store service only — no shipping / delivery.",
 
         stat_1_value: "Top local",
@@ -640,11 +648,11 @@
         stat_3_value: "514-508-0508",
         stat_3_label: "Call now",
 
-        warehouse_badge: "Tire warehouse feel",
-        warehouse_title: "Large tire selection, fast on-site service",
-        warehouse_desc: "Visit the shop for in-person deals, quick recommendations, and an efficient experience built to get you back on the road fast.",
+        warehouse_badge: "Large in-store selection",
+        warehouse_title: "A tire-centre experience: simple, fast, local",
+        warehouse_desc: "Visit in person to see available options, get a clear recommendation, and access deals reserved for in-store customers.",
         warehouse_point_1: "✅ In-person deals only",
-        warehouse_point_2: "⚡ Goal: less than 5 minute wait",
+        warehouse_point_2: "⚡ Goal: under 5 minute wait",
         warehouse_point_3: "📍 11840 Av. 54, Montreal, QC H1E 2J3",
 
         services_title: "Professional tire services",
@@ -693,7 +701,36 @@
       document.querySelectorAll("[data-i18n]").forEach(el=>{
         const key = el.getAttribute("data-i18n");
         if(i18n[lang][key]) el.textContent = i18n[lang][key];
+        if(!i18n[lang][key]) return;
+        if(key === "topbar"){
+          const label = lang === "fr" ? "Offres en magasin • objectif: moins de 5 minutes •" : "In-store deals • goal: under 5 minutes •";
+          el.innerHTML = `${label} <a href="tel:5145080508">514-508-0508</a>`;
+          return;
+        }
+        el.textContent = i18n[lang][key];
       });
 
       btnFr.classList.toggle("active", lang === "fr");
       btnEn.classList.toggle("active", lang === "en");
+
+      localStorage.setItem("autozunis_lang", lang);
+    }
+
+    function detectLanguage(){
+      const saved = localStorage.getItem("autozunis_lang");
+      if(saved === "fr" || saved === "en") return saved;
+
+      // French first default, with optional browser fallback:
+      const browserLang = (navigator.language || "").toLowerCase();
+      if(browserLang.startsWith("en")) return "en";
+      // French-first default. Visitors can switch to English and that choice is remembered.
+      return "fr";
+    }
+
+    btnFr.addEventListener("click", ()=>applyLanguage("fr"));
+    btnEn.addEventListener("click", ()=>applyLanguage("en"));
+
+    applyLanguage(detectLanguage());
+  </script>
+</body>
+</html>
