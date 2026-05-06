@@ -1,666 +1,709 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LE CENTRE DU PNEU AUTOZUNIS | Montréal</title>
-  <meta
-    name="description"
-    content="LE CENTRE DU PNEU AUTOZUNIS à Montréal: pneus, installation, alignement et service local. Appelez maintenant au 514-508-0508."
-  />
-
-  <style>
-    :root{
-      --bg:#0a1020;
-      --bg2:#0f1a33;
-      --card:#131f3f;
-      --text:#edf3ff;
-      --muted:#a9bbdd;
-      --primary:#2f80ff;
-      --accent:#22c55e;
-      --danger:#ef4444;
-      --border:#2a3f67;
-      --radius:14px;
-      --shadow:0 12px 28px rgba(0,0,0,.32);
-      --max:1200px;
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:linear-gradient(180deg,var(--bg),var(--bg2) 35%,var(--bg));
-      line-height:1.6;
-    }
-
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
-    .container{width:min(92%,var(--max));margin-inline:auto}
-
-    .btn{
-      border:1px solid transparent;
-      border-radius:10px;
-      padding:.78rem 1.1rem;
-      font-weight:800;
-      cursor:pointer;
-      transition:.2s ease;
-      display:inline-block;
-      text-align:center;
-    }
-    .btn-primary{background:var(--primary);color:white}
-    .btn-primary:hover{filter:brightness(1.08)}
-    .btn-ghost{border-color:var(--border);background:transparent;color:var(--text)}
-    .btn-ghost:hover{background:#1a2a50}
-    .btn-call{background:var(--accent);color:#05200d}
-    .btn-call:hover{filter:brightness(1.05)}
-
-    /* Header */
-    header{
-      position:sticky;top:0;z-index:100;
-      backdrop-filter:blur(10px);
-      background:rgba(8,14,30,.88);
-      border-bottom:1px solid var(--border);
-    }
-    .nav{
-      min-height:74px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-    }
-    .brand{
-      display:flex;align-items:center;gap:.72rem;
-      font-weight:900;font-size:1.02rem;
-    }
-    .brand-wheel{
-      width:36px;height:36px;border-radius:50%;
-      border:3px solid #dfe6f6;
-      background:radial-gradient(circle,#32466f 8%,#101c36 60%);
-      position:relative;
-    }
-    .brand-wheel::after{
-      content:"";
-      position:absolute;inset:8px;border-radius:50%;
-      border:2px dashed rgba(255,255,255,.25);
-    }
-    nav ul{
-      list-style:none;
-      display:flex;
-      align-items:center;
-      gap:1rem;
-      flex-wrap:wrap;
-    }
-    nav a{color:var(--muted);font-weight:700}
-    nav a:hover{color:var(--text)}
-
-    .lang{
-      display:flex;gap:.35rem;align-items:center;
-      border:1px solid var(--border);
-      border-radius:10px;padding:.2rem;background:#0d1730;
-    }
-    .lang button{
-      border:0;cursor:pointer;
-      padding:.35rem .6rem;
-      border-radius:8px;
-      font-weight:800;
-      color:var(--text);
-      background:transparent;
-    }
-    .lang button.active{background:var(--primary)}
-
-    /* Hero */
-    .hero{padding:4.6rem 0 3.2rem}
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:1.3rem;
-      align-items:center;
-    }
-    .kicker{
-      display:inline-block;
-      font-weight:900;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:.7rem;
-      font-size:.78rem;
-    }
-    h1{
-      font-size:clamp(2rem,5vw,3.4rem);
-      line-height:1.12;
-      margin-bottom:1rem;
-    }
-    .hero p{color:var(--muted);margin-bottom:1.2rem;max-width:62ch}
-    .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
-    .hero-note{
-      border:1px dashed #48669d;
-      padding:.65rem .8rem;
-      border-radius:10px;
-      color:#d6e4ff;
-      background:rgba(47,128,255,.08);
-      max-width:fit-content;
-      font-weight:700;
-    }
-
-    .hero-card{
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      background:linear-gradient(160deg,#102043,#0c1730);
-      padding:1rem;
-      box-shadow:var(--shadow);
-    }
-    .hero-card img{
-      border-radius:12px;
-      height:270px;
-      width:100%;
-      object-fit:cover;
-      border:1px solid #314f87;
-    }
-    .hero-stats{
-      margin-top:.8rem;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:.6rem;
-    }
-    .stat{
-      border:1px solid var(--border);
-      border-radius:10px;
-      background:#0f1b36;
-      padding:.6rem;
-      text-align:center;
-    }
-    .stat strong{display:block;font-size:1.03rem}
-    .stat span{font-size:.8rem;color:var(--muted)}
-
-    /* Shared sections */
-    section{padding:3rem 0}
-    .section-title{
-      font-size:clamp(1.5rem,3vw,2.2rem);
-      margin-bottom:.55rem;
-    }
-    .section-sub{color:var(--muted);margin-bottom:1.2rem}
-
-    /* Gallery / Services */
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:1rem;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-    .card img{
-      width:100%;
-      height:190px;
-      object-fit:cover;
-    }
-    .card-body{padding:1rem}
-    .card-body h3{margin-bottom:.35rem}
-    .card-body p{color:var(--muted)}
-
-    /* Location focus */
-    .location-wrap{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1rem;
-      align-items:stretch;
-    }
-    .panel{
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      background:var(--card);
-      padding:1.1rem;
-      box-shadow:var(--shadow);
-    }
-    .address{
-      font-size:1.05rem;
-      font-weight:900;
-      color:#d8e7ff;
-      margin:.55rem 0 .95rem;
-    }
-    .pill{
-      display:inline-block;
-      border:1px solid #3f629e;
-      background:rgba(47,128,255,.13);
-      color:#bed6ff;
-      padding:.28rem .6rem;
-      border-radius:999px;
-      font-size:.78rem;
-      font-weight:800;
-      margin-bottom:.65rem;
-    }
-    .call-box{
-      margin-top:1rem;
-      border:1px solid #2f7a4f;
-      background:rgba(34,197,94,.12);
-      border-radius:12px;
-      padding:.8rem;
-    }
-    .call-big{
-      font-size:1.35rem;
-      font-weight:900;
-      letter-spacing:.02em;
-      margin:.15rem 0 .55rem;
-      color:#b8ffd0;
-    }
-
-    .map{
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      min-height:340px;
-    }
-    .map iframe{width:100%;height:100%;min-height:340px;border:0}
-
-    /* Top contender CTA strip */
-    .cta-strip{
-      border:1px solid #3a5e98;
-      background:linear-gradient(135deg,rgba(47,128,255,.2),rgba(34,197,94,.18));
-      border-radius:var(--radius);
-      padding:1rem;
-      display:grid;
-      grid-template-columns:1.3fr .7fr;
-      gap:1rem;
-      align-items:center;
-    }
-    .cta-strip p{color:#dbe7ff}
-    .cta-actions{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
-
-    footer{
-      margin-top:2rem;
-      border-top:1px solid var(--border);
-      padding:2rem 0;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-    .foot{
-      display:flex;
-      justify-content:space-between;
-      gap:1rem;
-      flex-wrap:wrap;
-    }
-
-    @media (max-width:1024px){
-      .hero-grid{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr}
-      .location-wrap{grid-template-columns:1fr}
-      .cta-strip{grid-template-columns:1fr}
-      .cta-actions{justify-content:flex-start}
-    }
-    @media (max-width:650px){
-      nav ul li.hide-mobile{display:none}
-      .hero-stats{grid-template-columns:1fr}
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#accueil">
-        <span class="brand-wheel"></span>
-        <span>LE CENTRE DU PNEU AUTOZUNIS</span>
-      </a>
-
-      <nav>
-        <ul>
-          <li class="hide-mobile"><a href="#services" data-i18n="nav_services">Services</a></li>
-          <li class="hide-mobile"><a href="#galerie" data-i18n="nav_gallery">Galerie</a></li>
-          <li><a href="#emplacement" data-i18n="nav_location">Emplacement</a></li>
-          <li><a href="tel:5145080508" data-i18n="nav_call">Appelez: 514-508-0508</a></li>
-          <li>
-            <div class="lang" aria-label="Language toggle">
-              <button id="btn-fr" class="active" type="button">FR</button>
-              <button id="btn-en" type="button">EN</button>
-            </div>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main id="accueil">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="kicker" data-i18n="hero_kicker">Votre référence locale à Montréal</span>
-          <h1 data-i18n="hero_title">LE CENTRE DU PNEU AUTOZUNIS — Un choix de premier plan</h1>
-          <p data-i18n="hero_desc">
-            Pour pneus, installation et service rapide en magasin, faites confiance à une équipe locale reconnue.
-            Venez nous voir au 11840 Av. 54, Montreal, QC H1E 2J3.
-          </p>
-
-          <div class="hero-cta">
-            <a class="btn btn-call" href="tel:5145080508" data-i18n="hero_call_btn">📞 Appelez maintenant</a>
-            <a class="btn btn-primary" href="#emplacement" data-i18n="hero_location_btn">Voir l'emplacement</a>
-            <a class="btn btn-ghost" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/search/?api=1&query=11840+Av.+54,+Montreal,+QC+H1E+2J3"
-               data-i18n="hero_map_btn">Ouvrir Google Maps</a>
-          </div>
-
-          <div class="hero-note" data-i18n="hero_note">
-            Service local en magasin uniquement — aucune livraison / expédition.
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <img
-            src="https://images.unsplash.com/photo-1544829099-b9a0c5303bea?auto=format&fit=crop&w=1200&q=80"
-            alt="Pneu haute performance en gros plan"
-          />
-          <div class="hero-stats">
-            <div class="stat">
-              <strong data-i18n="stat_1_value">Top local</strong>
-              <span data-i18n="stat_1_label">Contender à Montréal</span>
-            </div>
-            <div class="stat">
-              <strong data-i18n="stat_2_value">Local</strong>
-              <span data-i18n="stat_2_label">Service en magasin</span>
-            </div>
-            <div class="stat">
-              <strong data-i18n="stat_3_value">514-508-0508</strong>
-              <span data-i18n="stat_3_label">Appelez maintenant</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <h2 class="section-title" data-i18n="services_title">Services pneus professionnels</h2>
-        <p class="section-sub" data-i18n="services_sub">
-          Un service fiable, rapide et local pour vous garder en confiance sur la route.
-        </p>
-
-        <div class="grid-3">
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
-              alt="Technicien qui installe un pneu"
-            />
-            <div class="card-body">
-              <h3 data-i18n="service_1_title">Installation & équilibrage</h3>
-              <p data-i18n="service_1_desc">Montage professionnel pour une conduite stable, sécuritaire et confortable.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80"
-              alt="Pneus alignés en atelier"
-            />
-            <div class="card-body">
-              <h3 data-i18n="service_2_title">Alignement & rotation</h3>
-              <p data-i18n="service_2_desc">Maximisez la durée de vie de vos pneus avec un entretien de qualité.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1613214150388-4f3f4859f5cc?auto=format&fit=crop&w=1200&q=80"
-              alt="Pneus exposés en magasin"
-            />
-            <div class="card-body">
-              <h3 data-i18n="service_3_title">Conseil local personnalisé</h3>
-              <p data-i18n="service_3_desc">Notre équipe vous guide vers le bon pneu selon votre véhicule et vos besoins.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="galerie">
-      <div class="container">
-        <h2 class="section-title" data-i18n="gallery_title">Galerie pneus</h2>
-        <p class="section-sub" data-i18n="gallery_sub">
-          Qualité visuelle et performance: découvrez notre univers pneus.
-        </p>
-
-        <div class="grid-3">
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1200&q=80" alt="Pneu sur jante moderne" />
-            <div class="card-body">
-              <h3 data-i18n="gallery_1_title">Performance</h3>
-              <p data-i18n="gallery_1_desc">Adhérence solide et conduite précise.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1200&q=80" alt="Pneus en atelier automobile" />
-            <div class="card-body">
-              <h3 data-i18n="gallery_2_title">Fiabilité</h3>
-              <p data-i18n="gallery_2_desc">Travail soigné par une équipe locale engagée.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1537041373298-55dbb5ec0fbd?auto=format&fit=crop&w=1200&q=80" alt="Roue et pneu en gros plan" />
-            <div class="card-body">
-              <h3 data-i18n="gallery_3_title">Durabilité</h3>
-              <p data-i18n="gallery_3_desc">Conçu pour vos trajets quotidiens et longue distance.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="emplacement">
-      <div class="container">
-        <h2 class="section-title" data-i18n="location_title">Emplacement stratégique à Montréal</h2>
-        <p class="section-sub" data-i18n="location_sub">
-          Venez directement en magasin. Service local, rapide et accessible.
-        </p>
-
-        <div class="location-wrap">
-          <div class="panel">
-            <span class="pill" data-i18n="location_badge">Magasin local • Service sur place</span>
-            <p data-i18n="location_label">Adresse:</p>
-            <p class="address">11840 Av. 54, Montreal, QC H1E 2J3</p>
-
-            <p data-i18n="location_note">
-              LE CENTRE DU PNEU AUTOZUNIS se positionne comme un concurrent de premier plan
-              pour le service pneus à Montréal.
-            </p>
-
-            <div class="call-box">
-              <p data-i18n="call_box_title">Besoin d’aide rapidement?</p>
-              <p class="call-big">514-508-0508</p>
-              <a class="btn btn-call" href="tel:5145080508" data-i18n="call_box_btn">📞 Appelez maintenant</a>
-            </div>
-          </div>
-
-          <div class="map">
-            <iframe
-              loading="lazy"
-              allowfullscreen
-              src="https://www.google.com/maps?q=11840+Av.+54,+Montreal,+QC+H1E+2J3&output=embed">
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container cta-strip">
-        <div>
-          <h3 data-i18n="strip_title">Prêt à améliorer votre conduite?</h3>
-          <p data-i18n="strip_desc">
-            Contactez LE CENTRE DU PNEU AUTOZUNIS dès maintenant et parlez à une équipe locale
-            qui vise l’excellence.
-          </p>
-        </div>
-        <div class="cta-actions">
-          <a class="btn btn-call" href="tel:5145080508" data-i18n="strip_call">📞 Appeler 514-508-0508</a>
-          <a class="btn btn-primary" href="#emplacement" data-i18n="strip_visit">Visiter le magasin</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container foot">
-      <p data-i18n="footer_left">© 2026 LE CENTRE DU PNEU AUTOZUNIS. Tous droits réservés.</p>
-      <p>
-        <span data-i18n="footer_phone">Téléphone:</span>
-        <a href="tel:5145080508">514-508-0508</a> •
-        <span data-i18n="footer_address">Adresse:</span> 11840 Av. 54, Montreal, QC H1E 2J3
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    const i18n = {
-      fr: {
-        nav_services: "Services",
-        nav_gallery: "Galerie",
-        nav_location: "Emplacement",
-        nav_call: "Appelez: 514-508-0508",
-
-        hero_kicker: "Votre référence locale à Montréal",
-        hero_title: "LE CENTRE DU PNEU AUTOZUNIS — Un choix de premier plan",
-        hero_desc: "Pour pneus, installation et service rapide en magasin, faites confiance à une équipe locale reconnue. Venez nous voir au 11840 Av. 54, Montreal, QC H1E 2J3.",
-        hero_call_btn: "📞 Appelez maintenant",
-        hero_location_btn: "Voir l'emplacement",
-        hero_map_btn: "Ouvrir Google Maps",
-        hero_note: "Service local en magasin uniquement — aucune livraison / expédition.",
-
-        stat_1_value: "Top local",
-        stat_1_label: "Contender à Montréal",
-        stat_2_value: "Local",
-        stat_2_label: "Service en magasin",
-        stat_3_value: "514-508-0508",
-        stat_3_label: "Appelez maintenant",
-
-        services_title: "Services pneus professionnels",
-        services_sub: "Un service fiable, rapide et local pour vous garder en confiance sur la route.",
-        service_1_title: "Installation & équilibrage",
-        service_1_desc: "Montage professionnel pour une conduite stable, sécuritaire et confortable.",
-        service_2_title: "Alignement & rotation",
-        service_2_desc: "Maximisez la durée de vie de vos pneus avec un entretien de qualité.",
-        service_3_title: "Conseil local personnalisé",
-        service_3_desc: "Notre équipe vous guide vers le bon pneu selon votre véhicule et vos besoins.",
-
-        gallery_title: "Galerie pneus",
-        gallery_sub: "Qualité visuelle et performance: découvrez notre univers pneus.",
-        gallery_1_title: "Performance",
-        gallery_1_desc: "Adhérence solide et conduite précise.",
-        gallery_2_title: "Fiabilité",
-        gallery_2_desc: "Travail soigné par une équipe locale engagée.",
-        gallery_3_title: "Durabilité",
-        gallery_3_desc: "Conçu pour vos trajets quotidiens et longue distance.",
-
-        location_title: "Emplacement stratégique à Montréal",
-        location_sub: "Venez directement en magasin. Service local, rapide et accessible.",
-        location_badge: "Magasin local • Service sur place",
-        location_label: "Adresse:",
-        location_note: "LE CENTRE DU PNEU AUTOZUNIS se positionne comme un concurrent de premier plan pour le service pneus à Montréal.",
-        call_box_title: "Besoin d’aide rapidement?",
-        call_box_btn: "📞 Appelez maintenant",
-
-        strip_title: "Prêt à améliorer votre conduite?",
-        strip_desc: "Contactez LE CENTRE DU PNEU AUTOZUNIS dès maintenant et parlez à une équipe locale qui vise l’excellence.",
-        strip_call: "📞 Appeler 514-508-0508",
-        strip_visit: "Visiter le magasin",
-
-        footer_left: "© 2026 LE CENTRE DU PNEU AUTOZUNIS. Tous droits réservés.",
-        footer_phone: "Téléphone:",
-        footer_address: "Adresse:"
-      },
-
-      en: {
-        nav_services: "Services",
-        nav_gallery: "Gallery",
-        nav_location: "Location",
-        nav_call: "Call: 514-508-0508",
-
-        hero_kicker: "Your local Montreal tire expert",
-        hero_title: "LE CENTRE DU PNEU AUTOZUNIS — A top local contender",
-        hero_desc: "For tires, installation, and fast in-store service, trust a recognized local team. Visit us at 11840 Av. 54, Montreal, QC H1E 2J3.",
-        hero_call_btn: "📞 Call now",
-        hero_location_btn: "See location",
-        hero_map_btn: "Open Google Maps",
-        hero_note: "Local in-store service only — no shipping / delivery.",
-
-        stat_1_value: "Top local",
-        stat_1_label: "Montreal contender",
-        stat_2_value: "Local",
-        stat_2_label: "In-store service",
-        stat_3_value: "514-508-0508",
-        stat_3_label: "Call now",
-
-        services_title: "Professional tire services",
-        services_sub: "Reliable, fast, local service to keep you confident on the road.",
-        service_1_title: "Installation & balancing",
-        service_1_desc: "Professional tire fitting for stable, safe, and smooth driving.",
-        service_2_title: "Alignment & rotation",
-        service_2_desc: "Maximize tire life with quality maintenance.",
-        service_3_title: "Personalized local advice",
-        service_3_desc: "Our team helps you choose the right tire for your vehicle and needs.",
-
-        gallery_title: "Tire gallery",
-        gallery_sub: "Visual quality and performance: discover our tire world.",
-        gallery_1_title: "Performance",
-        gallery_1_desc: "Strong grip and precise handling.",
-        gallery_2_title: "Reliability",
-        gallery_2_desc: "Careful workmanship from a dedicated local team.",
-        gallery_3_title: "Durability",
-        gallery_3_desc: "Built for daily commuting and long-distance travel.",
-
-        location_title: "Strategic Montreal location",
-        location_sub: "Visit us directly in-store. Local, fast, and accessible service.",
-        location_badge: "Local shop • On-site service",
-        location_label: "Address:",
-        location_note: "LE CENTRE DU PNEU AUTOZUNIS positions itself as a top contender for tire service in Montreal.",
-        call_box_title: "Need help quickly?",
-        call_box_btn: "📞 Call now",
-
-        strip_title: "Ready to upgrade your drive?",
-        strip_desc: "Contact LE CENTRE DU PNEU AUTOZUNIS now and speak with a local team focused on excellence.",
-        strip_call: "📞 Call 514-508-0508",
-        strip_visit: "Visit the shop",
-
-        footer_left: "© 2026 LE CENTRE DU PNEU AUTOZUNIS. All rights reserved.",
-        footer_phone: "Phone:",
-        footer_address: "Address:"
-      }
-    };
-
-    const btnFr = document.getElementById("btn-fr");
-    const btnEn = document.getElementById("btn-en");
-
-    function applyLanguage(lang){
-      document.documentElement.lang = lang;
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
-        const key = el.getAttribute("data-i18n");
-        if(i18n[lang][key]) el.textContent = i18n[lang][key];
-      });
-
-      btnFr.classList.toggle("active", lang === "fr");
-      btnEn.classList.toggle("active", lang === "en");
-
-      localStorage.setItem("autozunis_lang", lang);
-    }
-
-    function detectLanguage(){
-      const saved = localStorage.getItem("autozunis_lang");
-      if(saved === "fr" || saved === "en") return saved;
-
-      // French first default, with optional browser fallback:
-      const browserLang = (navigator.language || "").toLowerCase();
-      if(browserLang.startsWith("en")) return "en";
-      return "fr";
-    }
-
-    btnFr.addEventListener("click", ()=>applyLanguage("fr"));
-    btnEn.addEventListener("click", ()=>applyLanguage("en"));
-
-    applyLanguage(detectLanguage());
-  </script>
-</body>
-</html>
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+index 3bb683c914781e8e806e616ea0863516b60d858d..0e03016e1bf5a1490b317f21c27a155ca89e7914 100644
+--- a/index.html
++++ b/index.html
+@@ -1,169 +1,182 @@
+ <!DOCTYPE html>
+ <html lang="fr">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>LE CENTRE DU PNEU AUTOZUNIS | Montréal</title>
+   <meta
+     name="description"
+     content="LE CENTRE DU PNEU AUTOZUNIS à Montréal: pneus, installation, alignement et service local. Appelez maintenant au 514-508-0508."
+   />
+ 
+   <style>
+     :root{
+       --bg:#0a1020;
+       --bg2:#0f1a33;
+       --card:#131f3f;
+       --text:#edf3ff;
+       --muted:#a9bbdd;
+       --primary:#2f80ff;
+       --accent:#22c55e;
++      --orange:#f59e0b;
++      --pink:#ec4899;
++      --cyan:#06b6d4;
++      --purple:#8b5cf6;
+       --danger:#ef4444;
+       --border:#2a3f67;
+       --radius:14px;
+       --shadow:0 12px 28px rgba(0,0,0,.32);
+       --max:1200px;
+     }
+ 
+     *{box-sizing:border-box;margin:0;padding:0}
+     html{scroll-behavior:smooth}
+     body{
+       font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+       color:var(--text);
+       background:linear-gradient(180deg,var(--bg),var(--bg2) 35%,var(--bg));
+       line-height:1.6;
+     }
+ 
+     a{text-decoration:none;color:inherit}
+     img{max-width:100%;display:block}
+     .container{width:min(92%,var(--max));margin-inline:auto}
+ 
+     .btn{
+       border:1px solid transparent;
+       border-radius:10px;
+       padding:.78rem 1.1rem;
+       font-weight:800;
+       cursor:pointer;
+       transition:.2s ease;
+       display:inline-block;
+       text-align:center;
+     }
+-    .btn-primary{background:var(--primary);color:white}
+-    .btn-primary:hover{filter:brightness(1.08)}
+-    .btn-ghost{border-color:var(--border);background:transparent;color:var(--text)}
+-    .btn-ghost:hover{background:#1a2a50}
+-    .btn-call{background:var(--accent);color:#05200d}
+-    .btn-call:hover{filter:brightness(1.05)}
++    .btn-primary{background:linear-gradient(135deg,var(--primary),#65a5ff);color:white;box-shadow:0 10px 22px rgba(47,128,255,.22)}
++    .btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
++    .btn-ghost{border-color:#6b7fa8;background:rgba(255,255,255,.06);color:var(--text)}
++    .btn-ghost:hover{background:#1a2a50;transform:translateY(-1px)}
++    .btn-call{background:linear-gradient(135deg,var(--accent),#86efac);color:#05200d;box-shadow:0 10px 24px rgba(34,197,94,.28)}
++    .btn-call:hover{filter:brightness(1.05);transform:translateY(-1px)}
++    .btn-map{background:linear-gradient(135deg,var(--orange),#facc15);color:#241400;box-shadow:0 10px 24px rgba(245,158,11,.28)}
++    .btn-map:hover{filter:brightness(1.05);transform:translateY(-1px)}
+ 
+     /* Header */
+     header{
+       position:sticky;top:0;z-index:100;
+       backdrop-filter:blur(10px);
+       background:rgba(8,14,30,.88);
+       border-bottom:1px solid var(--border);
+     }
+     .nav{
+       min-height:74px;
+       display:flex;
+       align-items:center;
+       justify-content:space-between;
+       gap:1rem;
+     }
+     .brand{
+       display:flex;align-items:center;gap:.72rem;
+       font-weight:900;font-size:1.02rem;
+     }
+     .brand-wheel{
+       width:36px;height:36px;border-radius:50%;
+       border:3px solid #dfe6f6;
+       background:radial-gradient(circle,#32466f 8%,#101c36 60%);
+       position:relative;
+     }
+     .brand-wheel::after{
+       content:"";
+       position:absolute;inset:8px;border-radius:50%;
+       border:2px dashed rgba(255,255,255,.25);
+     }
+     nav ul{
+       list-style:none;
+       display:flex;
+       align-items:center;
+       gap:1rem;
+       flex-wrap:wrap;
+     }
+     nav a{color:var(--muted);font-weight:700}
+     nav a:hover{color:var(--text)}
++    nav a[href^="tel:"]{color:#b8ffd0;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.45);padding:.45rem .7rem;border-radius:999px}
++    nav a[href^="tel:"]:hover{background:rgba(34,197,94,.25);color:#fff}
+ 
+     .lang{
+       display:flex;gap:.35rem;align-items:center;
+       border:1px solid var(--border);
+       border-radius:10px;padding:.2rem;background:#0d1730;
+     }
+     .lang button{
+       border:0;cursor:pointer;
+       padding:.35rem .6rem;
+       border-radius:8px;
+       font-weight:800;
+       color:var(--text);
+       background:transparent;
+     }
+     .lang button.active{background:var(--primary)}
+ 
+     /* Hero */
+     .hero{padding:4.6rem 0 3.2rem}
+     .hero-grid{
+       display:grid;
+       grid-template-columns:1.1fr .9fr;
+       gap:1.3rem;
+       align-items:center;
+     }
+     .kicker{
+       display:inline-block;
+       font-weight:900;
+       letter-spacing:.08em;
+       text-transform:uppercase;
+       color:var(--accent);
+       margin-bottom:.7rem;
+       font-size:.78rem;
+     }
+     h1{
+       font-size:clamp(2rem,5vw,3.4rem);
+       line-height:1.12;
+       margin-bottom:1rem;
+     }
+     .hero p{color:var(--muted);margin-bottom:1.2rem;max-width:62ch}
+     .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
+     .hero-note{
+-      border:1px dashed #48669d;
++      border:1px dashed #facc15;
+       padding:.65rem .8rem;
+       border-radius:10px;
+-      color:#d6e4ff;
+-      background:rgba(47,128,255,.08);
++      color:#fff3bf;
++      background:rgba(245,158,11,.12);
+       max-width:fit-content;
+-      font-weight:700;
++      font-weight:800;
+     }
++    .deal-row{display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0 1.15rem}
++    .deal-chip{border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:.42rem .68rem;font-size:.86rem;font-weight:900}
++    .deal-green{background:rgba(34,197,94,.16);color:#bbf7d0;border-color:rgba(34,197,94,.45)}
++    .deal-orange{background:rgba(245,158,11,.17);color:#fde68a;border-color:rgba(245,158,11,.48)}
++    .deal-cyan{background:rgba(6,182,212,.16);color:#a5f3fc;border-color:rgba(6,182,212,.45)}
+ 
+     .hero-card{
+       border:1px solid var(--border);
+       border-radius:var(--radius);
+       background:linear-gradient(160deg,#102043,#0c1730);
+       padding:1rem;
+       box-shadow:var(--shadow);
+     }
+     .hero-card img{
+       border-radius:12px;
+       height:270px;
+       width:100%;
+       object-fit:cover;
+       border:1px solid #314f87;
+     }
+     .hero-stats{
+       margin-top:.8rem;
+       display:grid;
+       grid-template-columns:repeat(3,1fr);
+       gap:.6rem;
+     }
+     .stat{
+       border:1px solid var(--border);
+       border-radius:10px;
+       background:#0f1b36;
+@@ -174,225 +187,274 @@
+     .stat span{font-size:.8rem;color:var(--muted)}
+ 
+     /* Shared sections */
+     section{padding:3rem 0}
+     .section-title{
+       font-size:clamp(1.5rem,3vw,2.2rem);
+       margin-bottom:.55rem;
+     }
+     .section-sub{color:var(--muted);margin-bottom:1.2rem}
+ 
+     /* Gallery / Services */
+     .grid-3{
+       display:grid;
+       grid-template-columns:repeat(3,minmax(0,1fr));
+       gap:1rem;
+     }
+     .card{
+       background:var(--card);
+       border:1px solid var(--border);
+       border-radius:var(--radius);
+       overflow:hidden;
+       box-shadow:var(--shadow);
+     }
+     .card img{
+       width:100%;
+-      height:190px;
++      height:220px;
+       object-fit:cover;
++      transition:transform .25s ease;
+     }
++    .card:hover img{transform:scale(1.04)}
++    .card:nth-child(1){border-color:rgba(34,197,94,.55)}
++    .card:nth-child(2){border-color:rgba(245,158,11,.55)}
++    .card:nth-child(3){border-color:rgba(6,182,212,.55)}
+     .card-body{padding:1rem}
+     .card-body h3{margin-bottom:.35rem}
+     .card-body p{color:var(--muted)}
+ 
++    .warehouse-banner{
++      display:grid;
++      grid-template-columns:1fr 1fr;
++      gap:1rem;
++      align-items:center;
++      border:1px solid rgba(245,158,11,.55);
++      border-radius:var(--radius);
++      background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(47,128,255,.14));
++      padding:1rem;
++      box-shadow:var(--shadow);
++      margin-bottom:1rem;
++    }
++    .warehouse-banner img{width:100%;height:260px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.18)}
++    .warehouse-points{display:grid;gap:.55rem;margin-top:.9rem}
++    .warehouse-point{padding:.6rem .7rem;border-radius:10px;font-weight:900;border:1px solid rgba(255,255,255,.14)}
++    .warehouse-point:nth-child(1){background:rgba(34,197,94,.15);color:#bbf7d0}
++    .warehouse-point:nth-child(2){background:rgba(245,158,11,.15);color:#fde68a}
++    .warehouse-point:nth-child(3){background:rgba(6,182,212,.14);color:#a5f3fc}
++
+     /* Location focus */
+     .location-wrap{
+       display:grid;
+       grid-template-columns:1fr 1fr;
+       gap:1rem;
+       align-items:stretch;
+     }
+     .panel{
+       border:1px solid var(--border);
+       border-radius:var(--radius);
+       background:var(--card);
+       padding:1.1rem;
+       box-shadow:var(--shadow);
+     }
+     .address{
+       font-size:1.05rem;
+       font-weight:900;
+       color:#d8e7ff;
+       margin:.55rem 0 .95rem;
+     }
+     .pill{
+       display:inline-block;
+-      border:1px solid #3f629e;
+-      background:rgba(47,128,255,.13);
+-      color:#bed6ff;
++      border:1px solid #facc15;
++      background:rgba(245,158,11,.16);
++      color:#fde68a;
+       padding:.28rem .6rem;
+       border-radius:999px;
+       font-size:.78rem;
+       font-weight:800;
+       margin-bottom:.65rem;
+     }
+     .call-box{
+       margin-top:1rem;
+-      border:1px solid #2f7a4f;
+-      background:rgba(34,197,94,.12);
++      border:1px solid #22c55e;
++      background:linear-gradient(135deg,rgba(34,197,94,.18),rgba(6,182,212,.10));
+       border-radius:12px;
+       padding:.8rem;
+     }
+     .call-big{
+       font-size:1.35rem;
+       font-weight:900;
+       letter-spacing:.02em;
+       margin:.15rem 0 .55rem;
+       color:#b8ffd0;
+     }
+ 
+     .map{
+       border:1px solid var(--border);
+       border-radius:var(--radius);
+       overflow:hidden;
+       box-shadow:var(--shadow);
+       min-height:340px;
+     }
+     .map iframe{width:100%;height:100%;min-height:340px;border:0}
+ 
+     /* Top contender CTA strip */
+     .cta-strip{
+-      border:1px solid #3a5e98;
+-      background:linear-gradient(135deg,rgba(47,128,255,.2),rgba(34,197,94,.18));
++      border:1px solid #facc15;
++      background:linear-gradient(135deg,rgba(245,158,11,.22),rgba(34,197,94,.18),rgba(47,128,255,.18));
+       border-radius:var(--radius);
+       padding:1rem;
+       display:grid;
+       grid-template-columns:1.3fr .7fr;
+       gap:1rem;
+       align-items:center;
+     }
+     .cta-strip p{color:#dbe7ff}
+     .cta-actions{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+ 
+     footer{
+       margin-top:2rem;
+       border-top:1px solid var(--border);
+       padding:2rem 0;
+       color:var(--muted);
+       font-size:.95rem;
+     }
+     .foot{
+       display:flex;
+       justify-content:space-between;
+       gap:1rem;
+       flex-wrap:wrap;
+     }
+ 
+     @media (max-width:1024px){
+       .hero-grid{grid-template-columns:1fr}
+       .grid-3{grid-template-columns:1fr}
+       .location-wrap{grid-template-columns:1fr}
++      .warehouse-banner{grid-template-columns:1fr}
+       .cta-strip{grid-template-columns:1fr}
+       .cta-actions{justify-content:flex-start}
+     }
+     @media (max-width:650px){
+       nav ul li.hide-mobile{display:none}
+       .hero-stats{grid-template-columns:1fr}
+     }
+   </style>
+ </head>
+ <body>
+   <header>
+     <div class="container nav">
+       <a class="brand" href="#accueil">
+         <span class="brand-wheel"></span>
+         <span>LE CENTRE DU PNEU AUTOZUNIS</span>
+       </a>
+ 
+       <nav>
+         <ul>
+           <li class="hide-mobile"><a href="#services" data-i18n="nav_services">Services</a></li>
+           <li class="hide-mobile"><a href="#galerie" data-i18n="nav_gallery">Galerie</a></li>
+           <li><a href="#emplacement" data-i18n="nav_location">Emplacement</a></li>
+           <li><a href="tel:5145080508" data-i18n="nav_call">Appelez: 514-508-0508</a></li>
+           <li>
+             <div class="lang" aria-label="Language toggle">
+               <button id="btn-fr" class="active" type="button">FR</button>
+               <button id="btn-en" type="button">EN</button>
+             </div>
+           </li>
+         </ul>
+       </nav>
+     </div>
+   </header>
+ 
+   <main id="accueil">
+     <section class="hero">
+       <div class="container hero-grid">
+         <div>
+           <span class="kicker" data-i18n="hero_kicker">Votre référence locale à Montréal</span>
+           <h1 data-i18n="hero_title">LE CENTRE DU PNEU AUTOZUNIS — Un choix de premier plan</h1>
+           <p data-i18n="hero_desc">
+             Pour pneus, installation et service rapide en magasin, faites confiance à une équipe locale reconnue.
+             Venez nous voir au 11840 Av. 54, Montreal, QC H1E 2J3.
+           </p>
+ 
+           <div class="hero-cta">
+             <a class="btn btn-call" href="tel:5145080508" data-i18n="hero_call_btn">📞 Appelez maintenant</a>
+             <a class="btn btn-primary" href="#emplacement" data-i18n="hero_location_btn">Voir l'emplacement</a>
+-            <a class="btn btn-ghost" target="_blank" rel="noopener"
++            <a class="btn btn-map" target="_blank" rel="noopener"
+                href="https://www.google.com/maps/search/?api=1&query=11840+Av.+54,+Montreal,+QC+H1E+2J3"
+-               data-i18n="hero_map_btn">Ouvrir Google Maps</a>
++               data-i18n="hero_map_btn">🗺️ Ouvrir Google Maps</a>
++          </div>
++
++          <div class="deal-row" aria-label="Promotions en magasin">
++            <span class="deal-chip deal-green" data-i18n="deal_1">Offres en personne</span>
++            <span class="deal-chip deal-orange" data-i18n="deal_2">Attente moins de 5 minutes</span>
++            <span class="deal-chip deal-cyan" data-i18n="deal_3">Entrepôt de pneus local</span>
+           </div>
+ 
+           <div class="hero-note" data-i18n="hero_note">
+             Service local en magasin uniquement — aucune livraison / expédition.
+           </div>
+         </div>
+ 
+         <aside class="hero-card">
+           <img
+-            src="https://images.unsplash.com/photo-1544829099-b9a0c5303bea?auto=format&fit=crop&w=1200&q=80"
+-            alt="Pneu haute performance en gros plan"
++            src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=1200&q=80"
++            alt="Entrepôt avec plusieurs pneus empilés"
+           />
+           <div class="hero-stats">
+             <div class="stat">
+               <strong data-i18n="stat_1_value">Top local</strong>
+               <span data-i18n="stat_1_label">Contender à Montréal</span>
+             </div>
+             <div class="stat">
+               <strong data-i18n="stat_2_value">Local</strong>
+               <span data-i18n="stat_2_label">Service en magasin</span>
+             </div>
+             <div class="stat">
+               <strong data-i18n="stat_3_value">514-508-0508</strong>
+               <span data-i18n="stat_3_label">Appelez maintenant</span>
+             </div>
+           </div>
+         </aside>
+       </div>
+     </section>
+ 
++    <section id="entrepot">
++      <div class="container">
++        <div class="warehouse-banner">
++          <div>
++            <span class="pill" data-i18n="warehouse_badge">Ambiance entrepôt pneus</span>
++            <h2 class="section-title" data-i18n="warehouse_title">Grand choix de pneus, service rapide sur place</h2>
++            <p class="section-sub" data-i18n="warehouse_desc">Passez en magasin pour des offres en personne, des recommandations rapides et une expérience efficace conçue pour vous faire repartir vite.</p>
++            <div class="warehouse-points">
++              <div class="warehouse-point" data-i18n="warehouse_point_1">✅ Offres en personne seulement</div>
++              <div class="warehouse-point" data-i18n="warehouse_point_2">⚡ Objectif: attente moins de 5 minutes</div>
++              <div class="warehouse-point" data-i18n="warehouse_point_3">📍 11840 Av. 54, Montreal, QC H1E 2J3</div>
++            </div>
++          </div>
++          <img src="https://images.unsplash.com/photo-1600706432502-77a0e2e32781?auto=format&fit=crop&w=1200&q=80" alt="Rangées de pneus dans un entrepôt" />
++        </div>
++      </div>
++    </section>
++
+     <section id="services">
+       <div class="container">
+         <h2 class="section-title" data-i18n="services_title">Services pneus professionnels</h2>
+         <p class="section-sub" data-i18n="services_sub">
+           Un service fiable, rapide et local pour vous garder en confiance sur la route.
+         </p>
+ 
+         <div class="grid-3">
+           <article class="card">
+             <img
+               src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+               alt="Technicien qui installe un pneu"
+             />
+             <div class="card-body">
+               <h3 data-i18n="service_1_title">Installation & équilibrage</h3>
+               <p data-i18n="service_1_desc">Montage professionnel pour une conduite stable, sécuritaire et confortable.</p>
+             </div>
+           </article>
+ 
+           <article class="card">
+             <img
+               src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80"
+               alt="Pneus alignés en atelier"
+             />
+             <div class="card-body">
+@@ -450,50 +512,53 @@
+       </div>
+     </section>
+ 
+     <section id="emplacement">
+       <div class="container">
+         <h2 class="section-title" data-i18n="location_title">Emplacement stratégique à Montréal</h2>
+         <p class="section-sub" data-i18n="location_sub">
+           Venez directement en magasin. Service local, rapide et accessible.
+         </p>
+ 
+         <div class="location-wrap">
+           <div class="panel">
+             <span class="pill" data-i18n="location_badge">Magasin local • Service sur place</span>
+             <p data-i18n="location_label">Adresse:</p>
+             <p class="address">11840 Av. 54, Montreal, QC H1E 2J3</p>
+ 
+             <p data-i18n="location_note">
+               LE CENTRE DU PNEU AUTOZUNIS se positionne comme un concurrent de premier plan
+               pour le service pneus à Montréal.
+             </p>
+ 
+             <div class="call-box">
+               <p data-i18n="call_box_title">Besoin d’aide rapidement?</p>
+               <p class="call-big">514-508-0508</p>
+               <a class="btn btn-call" href="tel:5145080508" data-i18n="call_box_btn">📞 Appelez maintenant</a>
++              <a class="btn btn-map" target="_blank" rel="noopener"
++                 href="https://www.google.com/maps/search/?api=1&query=11840+Av.+54,+Montreal,+QC+H1E+2J3"
++                 data-i18n="call_box_map">🗺️ Ouvrir Google Maps</a>
+             </div>
+           </div>
+ 
+           <div class="map">
+             <iframe
+               loading="lazy"
+               allowfullscreen
+               src="https://www.google.com/maps?q=11840+Av.+54,+Montreal,+QC+H1E+2J3&output=embed">
+             </iframe>
+           </div>
+         </div>
+       </div>
+     </section>
+ 
+     <section>
+       <div class="container cta-strip">
+         <div>
+           <h3 data-i18n="strip_title">Prêt à améliorer votre conduite?</h3>
+           <p data-i18n="strip_desc">
+             Contactez LE CENTRE DU PNEU AUTOZUNIS dès maintenant et parlez à une équipe locale
+             qui vise l’excellence.
+           </p>
+         </div>
+         <div class="cta-actions">
+           <a class="btn btn-call" href="tel:5145080508" data-i18n="strip_call">📞 Appeler 514-508-0508</a>
+@@ -505,142 +570,164 @@
+ 
+   <footer>
+     <div class="container foot">
+       <p data-i18n="footer_left">© 2026 LE CENTRE DU PNEU AUTOZUNIS. Tous droits réservés.</p>
+       <p>
+         <span data-i18n="footer_phone">Téléphone:</span>
+         <a href="tel:5145080508">514-508-0508</a> •
+         <span data-i18n="footer_address">Adresse:</span> 11840 Av. 54, Montreal, QC H1E 2J3
+       </p>
+     </div>
+   </footer>
+ 
+   <script>
+     const i18n = {
+       fr: {
+         nav_services: "Services",
+         nav_gallery: "Galerie",
+         nav_location: "Emplacement",
+         nav_call: "Appelez: 514-508-0508",
+ 
+         hero_kicker: "Votre référence locale à Montréal",
+         hero_title: "LE CENTRE DU PNEU AUTOZUNIS — Un choix de premier plan",
+         hero_desc: "Pour pneus, installation et service rapide en magasin, faites confiance à une équipe locale reconnue. Venez nous voir au 11840 Av. 54, Montreal, QC H1E 2J3.",
+         hero_call_btn: "📞 Appelez maintenant",
+         hero_location_btn: "Voir l'emplacement",
+-        hero_map_btn: "Ouvrir Google Maps",
++        hero_map_btn: "🗺️ Ouvrir Google Maps",
++        deal_1: "Offres en personne",
++        deal_2: "Attente moins de 5 minutes",
++        deal_3: "Entrepôt de pneus local",
+         hero_note: "Service local en magasin uniquement — aucune livraison / expédition.",
+ 
+         stat_1_value: "Top local",
+         stat_1_label: "Contender à Montréal",
+         stat_2_value: "Local",
+         stat_2_label: "Service en magasin",
+         stat_3_value: "514-508-0508",
+         stat_3_label: "Appelez maintenant",
+ 
++        warehouse_badge: "Ambiance entrepôt pneus",
++        warehouse_title: "Grand choix de pneus, service rapide sur place",
++        warehouse_desc: "Passez en magasin pour des offres en personne, des recommandations rapides et une expérience efficace conçue pour vous faire repartir vite.",
++        warehouse_point_1: "✅ Offres en personne seulement",
++        warehouse_point_2: "⚡ Objectif: attente moins de 5 minutes",
++        warehouse_point_3: "📍 11840 Av. 54, Montreal, QC H1E 2J3",
++
+         services_title: "Services pneus professionnels",
+         services_sub: "Un service fiable, rapide et local pour vous garder en confiance sur la route.",
+         service_1_title: "Installation & équilibrage",
+         service_1_desc: "Montage professionnel pour une conduite stable, sécuritaire et confortable.",
+         service_2_title: "Alignement & rotation",
+         service_2_desc: "Maximisez la durée de vie de vos pneus avec un entretien de qualité.",
+         service_3_title: "Conseil local personnalisé",
+         service_3_desc: "Notre équipe vous guide vers le bon pneu selon votre véhicule et vos besoins.",
+ 
+         gallery_title: "Galerie pneus",
+         gallery_sub: "Qualité visuelle et performance: découvrez notre univers pneus.",
+         gallery_1_title: "Performance",
+         gallery_1_desc: "Adhérence solide et conduite précise.",
+         gallery_2_title: "Fiabilité",
+         gallery_2_desc: "Travail soigné par une équipe locale engagée.",
+         gallery_3_title: "Durabilité",
+         gallery_3_desc: "Conçu pour vos trajets quotidiens et longue distance.",
+ 
+         location_title: "Emplacement stratégique à Montréal",
+         location_sub: "Venez directement en magasin. Service local, rapide et accessible.",
+         location_badge: "Magasin local • Service sur place",
+         location_label: "Adresse:",
+         location_note: "LE CENTRE DU PNEU AUTOZUNIS se positionne comme un concurrent de premier plan pour le service pneus à Montréal.",
+         call_box_title: "Besoin d’aide rapidement?",
+         call_box_btn: "📞 Appelez maintenant",
++        call_box_map: "🗺️ Ouvrir Google Maps",
+ 
+         strip_title: "Prêt à améliorer votre conduite?",
+         strip_desc: "Contactez LE CENTRE DU PNEU AUTOZUNIS dès maintenant et parlez à une équipe locale qui vise l’excellence.",
+         strip_call: "📞 Appeler 514-508-0508",
+         strip_visit: "Visiter le magasin",
+ 
+         footer_left: "© 2026 LE CENTRE DU PNEU AUTOZUNIS. Tous droits réservés.",
+         footer_phone: "Téléphone:",
+         footer_address: "Adresse:"
+       },
+ 
+       en: {
+         nav_services: "Services",
+         nav_gallery: "Gallery",
+         nav_location: "Location",
+         nav_call: "Call: 514-508-0508",
+ 
+         hero_kicker: "Your local Montreal tire expert",
+         hero_title: "LE CENTRE DU PNEU AUTOZUNIS — A top local contender",
+         hero_desc: "For tires, installation, and fast in-store service, trust a recognized local team. Visit us at 11840 Av. 54, Montreal, QC H1E 2J3.",
+         hero_call_btn: "📞 Call now",
+         hero_location_btn: "See location",
+-        hero_map_btn: "Open Google Maps",
++        hero_map_btn: "🗺️ Open Google Maps",
++        deal_1: "In-person deals",
++        deal_2: "Less than 5 minute wait",
++        deal_3: "Local tire warehouse",
+         hero_note: "Local in-store service only — no shipping / delivery.",
+ 
+         stat_1_value: "Top local",
+         stat_1_label: "Montreal contender",
+         stat_2_value: "Local",
+         stat_2_label: "In-store service",
+         stat_3_value: "514-508-0508",
+         stat_3_label: "Call now",
+ 
++        warehouse_badge: "Tire warehouse feel",
++        warehouse_title: "Large tire selection, fast on-site service",
++        warehouse_desc: "Visit the shop for in-person deals, quick recommendations, and an efficient experience built to get you back on the road fast.",
++        warehouse_point_1: "✅ In-person deals only",
++        warehouse_point_2: "⚡ Goal: less than 5 minute wait",
++        warehouse_point_3: "📍 11840 Av. 54, Montreal, QC H1E 2J3",
++
+         services_title: "Professional tire services",
+         services_sub: "Reliable, fast, local service to keep you confident on the road.",
+         service_1_title: "Installation & balancing",
+         service_1_desc: "Professional tire fitting for stable, safe, and smooth driving.",
+         service_2_title: "Alignment & rotation",
+         service_2_desc: "Maximize tire life with quality maintenance.",
+         service_3_title: "Personalized local advice",
+         service_3_desc: "Our team helps you choose the right tire for your vehicle and needs.",
+ 
+         gallery_title: "Tire gallery",
+         gallery_sub: "Visual quality and performance: discover our tire world.",
+         gallery_1_title: "Performance",
+         gallery_1_desc: "Strong grip and precise handling.",
+         gallery_2_title: "Reliability",
+         gallery_2_desc: "Careful workmanship from a dedicated local team.",
+         gallery_3_title: "Durability",
+         gallery_3_desc: "Built for daily commuting and long-distance travel.",
+ 
+         location_title: "Strategic Montreal location",
+         location_sub: "Visit us directly in-store. Local, fast, and accessible service.",
+         location_badge: "Local shop • On-site service",
+         location_label: "Address:",
+         location_note: "LE CENTRE DU PNEU AUTOZUNIS positions itself as a top contender for tire service in Montreal.",
+         call_box_title: "Need help quickly?",
+         call_box_btn: "📞 Call now",
++        call_box_map: "🗺️ Open Google Maps",
+ 
+         strip_title: "Ready to upgrade your drive?",
+         strip_desc: "Contact LE CENTRE DU PNEU AUTOZUNIS now and speak with a local team focused on excellence.",
+         strip_call: "📞 Call 514-508-0508",
+         strip_visit: "Visit the shop",
+ 
+         footer_left: "© 2026 LE CENTRE DU PNEU AUTOZUNIS. All rights reserved.",
+         footer_phone: "Phone:",
+         footer_address: "Address:"
+       }
+     };
+ 
+     const btnFr = document.getElementById("btn-fr");
+     const btnEn = document.getElementById("btn-en");
+ 
+     function applyLanguage(lang){
+       document.documentElement.lang = lang;
+       document.querySelectorAll("[data-i18n]").forEach(el=>{
+         const key = el.getAttribute("data-i18n");
+         if(i18n[lang][key]) el.textContent = i18n[lang][key];
+       });
+ 
+       btnFr.classList.toggle("active", lang === "fr");
+       btnEn.classList.toggle("active", lang === "en");
+ 
+ 
+EOF
+)
